@@ -1,26 +1,28 @@
 ################################################################################
 #                    DO NOT MANUALLY EDIT THIS FILE!                           #
 ################################################################################
-# This file contains the automatically generated build configuration (2026/04/15 11:34:40)
-# requested at line 3 in F:\_xu\_prj\pcie_uart_tx_array\repo\pcie_uart.srcs\.dvt\default.build
+# This file contains the automatically generated build configuration (2026/04/16 17:30:08)
+# requested at line 3 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\.dvt\default.build
 
 
 ################ Verilog Auto-config Directives ################
 +dvt_init
 
++incdir+sources_1\new
+
 # Available `ifdef / `ifndef controls:
-# +define+DEBUG
+# +define+DEBUG_axi_uart_tx
 # +define+DEBUG_uart_f2ser_read
-# +define+DEBUG_uart_f2ser_write
+# +define+DEBUG_xdma_lite_rw
 # +define+TEST
 # +define+USE_BRUST_REG
 
 sources_1/new/uart_f2ser_read.v
-sources_1/new/uart_f2ser_write.v
-sources_1/new/uart_driv_flag_gen.v
-sources_1/new/uart_driv_flag_gen_v1.v
 sources_1/new/bridge_top_v2.v
+sources_1/new/xdma_lite_rw.sv
+sources_1/new/_common_package.sv
+sources_1/new/_pcie_uart_package.sv
+sources_1/new/axi_uart_tx.sv
 sources_1/new/pcie_uart.v
 sim_1/new/TB_1.sv
-sources_1/new/xdma_bar_ctrl.v
 

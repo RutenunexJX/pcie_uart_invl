@@ -14,4 +14,66 @@
 	<natures>
 		<nature>ro.amiq.vlogdt.VlogNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>DVT Auto-Linked</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_common_package.sv</name>
+			<type>1</type>
+			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_common_package.sv</location>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_interface.sv</name>
+			<type>1</type>
+			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_interface.sv</location>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_pcie_uart_package.sv</name>
+			<type>1</type>
+			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_pcie_uart_package.sv</location>
+		</link>
+		<link>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_svh.svh</name>
+			<type>1</type>
+			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_svh.svh</location>
+		</link>
+	</linkedResources>
 </projectDescription>
