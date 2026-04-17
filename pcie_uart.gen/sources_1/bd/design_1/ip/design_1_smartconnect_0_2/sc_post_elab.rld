@@ -27,7 +27,7 @@
 /timing/M00_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M00_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M00_Exit/DATA_WIDTH/value=64
-/config/M00_Exit/ID_WIDTH/value=4
+/config/M00_Exit/ID_WIDTH/value=0
 /config/M00_Exit/PROTOCOL/value=AXI4
 /config/M00_Exit/ADDR_WIDTH/value=64
 /timing/M01_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -41,7 +41,7 @@
 /timing/M01_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M01_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M01_Exit/DATA_WIDTH/value=64
-/config/M01_Exit/ID_WIDTH/value=4
+/config/M01_Exit/ID_WIDTH/value=0
 /config/M01_Exit/PROTOCOL/value=AXI4
 /config/M01_Exit/ADDR_WIDTH/value=64
 /timing/M02_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -55,7 +55,7 @@
 /timing/M02_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M02_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M02_Exit/DATA_WIDTH/value=64
-/config/M02_Exit/ID_WIDTH/value=4
+/config/M02_Exit/ID_WIDTH/value=0
 /config/M02_Exit/PROTOCOL/value=AXI4
 /config/M02_Exit/ADDR_WIDTH/value=64
 /timing/M03_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -69,7 +69,7 @@
 /timing/M03_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M03_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M03_Exit/DATA_WIDTH/value=64
-/config/M03_Exit/ID_WIDTH/value=4
+/config/M03_Exit/ID_WIDTH/value=0
 /config/M03_Exit/PROTOCOL/value=AXI4
 /config/M03_Exit/ADDR_WIDTH/value=64
 /timing/M04_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -83,7 +83,7 @@
 /timing/M04_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M04_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M04_Exit/DATA_WIDTH/value=64
-/config/M04_Exit/ID_WIDTH/value=4
+/config/M04_Exit/ID_WIDTH/value=0
 /config/M04_Exit/PROTOCOL/value=AXI4
 /config/M04_Exit/ADDR_WIDTH/value=64
 /timing/M05_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -97,7 +97,7 @@
 /timing/M05_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M05_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M05_Exit/DATA_WIDTH/value=64
-/config/M05_Exit/ID_WIDTH/value=4
+/config/M05_Exit/ID_WIDTH/value=0
 /config/M05_Exit/PROTOCOL/value=AXI4
 /config/M05_Exit/ADDR_WIDTH/value=64
 /timing/M06_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -111,7 +111,7 @@
 /timing/M06_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M06_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M06_Exit/DATA_WIDTH/value=64
-/config/M06_Exit/ID_WIDTH/value=4
+/config/M06_Exit/ID_WIDTH/value=0
 /config/M06_Exit/PROTOCOL/value=AXI4
 /config/M06_Exit/ADDR_WIDTH/value=64
 /timing/M07_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -125,7 +125,7 @@
 /timing/M07_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M07_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M07_Exit/DATA_WIDTH/value=64
-/config/M07_Exit/ID_WIDTH/value=4
+/config/M07_Exit/ID_WIDTH/value=0
 /config/M07_Exit/PROTOCOL/value=AXI4
 /config/M07_Exit/ADDR_WIDTH/value=64
 /timing/M08_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -139,7 +139,7 @@
 /timing/M08_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M08_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M08_Exit/DATA_WIDTH/value=64
-/config/M08_Exit/ID_WIDTH/value=4
+/config/M08_Exit/ID_WIDTH/value=0
 /config/M08_Exit/PROTOCOL/value=AXI4
 /config/M08_Exit/ADDR_WIDTH/value=64
 /timing/M09_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -153,7 +153,7 @@
 /timing/M09_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M09_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M09_Exit/DATA_WIDTH/value=64
-/config/M09_Exit/ID_WIDTH/value=4
+/config/M09_Exit/ID_WIDTH/value=0
 /config/M09_Exit/PROTOCOL/value=AXI4
 /config/M09_Exit/ADDR_WIDTH/value=64
 /timing/M10_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -167,7 +167,7 @@
 /timing/M10_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M10_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M10_Exit/DATA_WIDTH/value=64
-/config/M10_Exit/ID_WIDTH/value=4
+/config/M10_Exit/ID_WIDTH/value=0
 /config/M10_Exit/PROTOCOL/value=AXI4
 /config/M10_Exit/ADDR_WIDTH/value=64
 /timing/M11_Buffer/AR_SLR_PIPE/value=0;range=0..8;strength=0
@@ -181,7 +181,7 @@
 /timing/M11_Buffer/W_SLR_PIPE/value=0;range=0..8;strength=0
 /timing/M11_Exit/REGSLICE/value=1;range=0,1;strength=0
 /config/M11_Exit/DATA_WIDTH/value=64
-/config/M11_Exit/ID_WIDTH/value=4
+/config/M11_Exit/ID_WIDTH/value=0
 /config/M11_Exit/PROTOCOL/value=AXI4
 /config/M11_Exit/ADDR_WIDTH/value=64
 /timing/SW0/AR_M_PIPE/value=1;range=0..8;strength=0

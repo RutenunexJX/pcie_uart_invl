@@ -1,76 +1,85 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company:
-// Engineer:
+//////////////////////////////////////////////////////////////////////////
 //
-// Create Date: 2026/04/16 10:22:05
-// Design Name:
-// Module Name: axi_uart_tx
-// Project Name:
-// Target Devices:
-// Tool Versions:
-// Description:
+// File Name           : axi_uart_tx
+// Description         :
+// Author              : xqj
+// Date                : 2026-03-17 11:47:55
+// Version             : 1.0
+// Modification History:
+// Date                   Author    Version    Description
+// 2026-03-17 11:47:55    xqj       1.0        Initial Creation
 //
-// Dependencies:
-//
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-//
-//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 `include "_svh.svh"
-//`define DEBUG_axi_uart_tx
-
+`define DEBUG_axi_uart_tx
 module axi_uart_tx #(
-	P_PARA_VALIDITY_CHECK = P_ENABLE
+	parameter bit P_PARA_VALIDITY_CHECK = P_DISABLE
 )(
-	input	logic					clk				,
-	input	logic					rst				,
+	input	logic					clk					,
+	input	logic					rst					,
 
-	input	axi_uart_tx_para_t		tx_para			,
-	input	axi_uart_tx_ctrl_t		tx_ctrl			,
-	output	axi_uart_tx_status_t	tx_status		,
+	output	logic					uart_tx				,
 
-	axi_full_if.slave_write			sw_axi_full_if	,
+	input	axi_uart_tx_para_t		tx_para				,
+	input	axi_uart_tx_ctrl_t		tx_ctrl				,
+	output	axi_uart_tx_status_t	tx_status			,
 
-	output	logic					uart_tx			  //
+	axi_full_if.slave_write			sw_axi_full_if
 );
 
-`define D `ifdef DEBUG_axi_uart_tx (*mark_debug = "true"*) `else `endif
-
-`define INVL_CDN ((para_tx_invl_mode == 2'd0) ? ((cs == STOP_BIT) || (cs == PARA_CFG)) : 1'd0)
-`define CFG_DONE_CDN (((para_cfg_req_post == 2'd1) & (LR_CFG_DONE > 2'd1)) || ((para_cfg_req_post == 2'd2) & chl_clr_done))
-`define BYTE_CNT_THRD ((tff_rd_strb_cnt > 0) ? (tff_rd_strb_cnt - 1) : 0)
-
-`define EFF_STRB_SFT (8 - ((LR_AXI_WR_EFF_LEN - axi_wr_cnt) + wstrb_right_part_zero_cnt[7]))
-
+`define D `ifdef DEBUG_axi_uart_tx (*mark_debug = "true"*)(*keep = "true"*)`else `endif
 localparam P_FRAC_THRD = 24'd10_000_000;
 
-genvar i;
-
-reg r1_UART_TX;
-
-reg [7:0]p_chk_data;
-reg [3:0]tx_cnt, tx_stop_bit_cnt;
-reg r1_tx_driv_flag, tx_driv_flag_sft, stop_bit_done;
-reg [1:0] para_cfg_req_post;
-reg [3:0]		tff_rd_strb_cnt;
-wire[3:0]		tff_rd_strb_right_part_zero_cnt [7:0];
-reg 			is_byte_zero;
-reg [15:0] axi_wr_cnt;
-wire [3:0] wstrb_cnt = wstrb[7 ] + wstrb[6 ] + wstrb[5 ] + wstrb[4 ] + wstrb[3 ] + wstrb[2 ] + wstrb[1 ] + wstrb[0 ];
-reg  [7:0] eff_wstrb;
-wire [63:0]eff_wdata;
-wire [3:0] wstrb_right_part_zero_cnt [7:0];
-
-
+// ================================================================================
+//                               logic definition
+// ================================================================================
+logic			awready						;
+logic			wready						;
+logic	[3:0]	bid							;
+logic	[1:0]	bresp						;
+logic			bvalid						;
+logic			aw_hs						;
+logic			w_hs						;
+logic			b_hs						;
+logic			act_wlast					;
+//
+logic			uart_tx_pre					;
+logic	[7:0]	parity_check_data			;
+logic	[3:0]	tx_cnt						;
+logic	[3:0]	tx_stop_bit_cnt				;
+logic			r1_tx_driv_flag				;
+logic			tx_driv_flag_sft			;
+logic			stop_bit_done				;
+logic	[3:0]	fifo_rd_strb_cnt			;
+logic	[3:0]	fifo_rd_strb_cnt_sat_dec	;
+logic	[3:0]	fifo_rd_strb_trailing_zeros	;
+logic	[15:0]	axi_wr_cnt					;
+//
+logic	[3:0]	wstrb_cnt					;
 logic			tx_driv_flag				;
 logic	[31:0]	phase_sum					;
 logic	[31:0]	r1_phase_sum				;
 logic	[23:0]	frac_part					;
 logic			frac_carry_bit				;
+//
+logic	[7:0]	eff_wstrb					;
+logic	[15:0]	eff_wstrb_sft				;
+logic	[63:0]	eff_wdata					;
+logic	[3:0]	wstrb_trailing_zeros		;
+//
+logic			fifo_rd_en_pre				;
+logic	[71:0]	fifo_dout_post				;
+logic	[3:0]	fifo_rd_byte_num			;
+//
+logic	[15:0]	act_axi_wr_eff_len			;
+logic	[15:0]	act_axi_wr_max_len			;
 
+logic	[63:0]	slid_wind					;
 
+// ================================================================================
+//                               struct and enum definition
+// ================================================================================
 typedef enum logic [3:0]{
 	TX_IDLE				,
 	TX_DATA				,
@@ -78,134 +87,180 @@ typedef enum logic [3:0]{
 	TX_PARITY_CHECK
 }tx_st_e;
 
-tx_st_e	cs;
-tx_st_e	ns;
+typedef enum logic [3:0]{
+	FRAME_IDLE			,
+	FRAME_CFG			,
+	FRAME_PAYLOAD		,
+	FORMAT_ERROR
+}priv_frame_e;
 
+typedef struct{
+	logic	no_tx_interval;
+	logic	ready_to_cfg;
+	logic	got_payload_len;
+	logic	got_interval_val;
+	logic	got_interval_unit;
+	logic	got_whole_payload;
+}flag_t;
+
+typedef struct{
+	logic	[31:0]	frame_header;
+	logic	[15:0]	payload_len;
+	logic	[15:0]	interval_val;
+	interval_unit_e	interval_unit;
+}priv_frame_t;
+
+typedef	struct{
+	logic	[71:0]	din			;
+	logic			wr_en		;
+	logic			rd_en		;
+	logic	[71:0]	dout		;
+	logic			full		;
+	logic			empty		;
+	logic	[10:0]	data_count	;
+}tx_fifo_t;
+
+tx_st_e				cs;
+tx_st_e				ns;
+priv_frame_e		frame_cs;
+priv_frame_e		frame_ns;
+tx_fifo_t			tx_fifo;
 axi_uart_tx_para_t	new_tx_para;
 axi_uart_tx_para_t	cur_tx_para;
+flag_t				flag = '{default:'0};
 
-reg 			r1_w_hs;
-wire	[4:0]	strb_cnt;
-reg		[4:0]	strb_cnt_latch;
-wire 	[63:0]	strb_fix_data;
-reg 	[63:0]	strb_fix_data_latch;
+// ================================================================================
+//                               combinational assignment
+// ================================================================================
+// interface
+assign	sw_axi_full_if.awready		= awready;
+assign	sw_axi_full_if.wready		= wready;
+assign	sw_axi_full_if.bid			= bid;
+assign	sw_axi_full_if.bresp		= bresp;
+assign	sw_axi_full_if.bvalid		= bvalid;
+// axi handshake
+assign	aw_hs						= sw_axi_full_if.awready & sw_axi_full_if.awvalid;
+assign	w_hs						= sw_axi_full_if.wvalid & sw_axi_full_if.wready;
+assign	b_hs						= sw_axi_full_if.bvalid & sw_axi_full_if.bready;
+assign	act_wlast					= sw_axi_full_if.wlast & sw_axi_full_if.wvalid;
+// function
+assign	wstrb_trailing_zeros		= 4'(get_trailing_zeros(128'(sw_axi_full_if.wstrb), 8));
+assign	fifo_rd_strb_cnt_sat_dec	= 4'(sat_dec(32'(fifo_rd_strb_cnt)));
+assign	fifo_rd_strb_trailing_zeros	= 4'(get_trailing_zeros(128'(tx_fifo.dout[71:64]), 8));
+assign	frac_carry_bit				= (frac_part >= P_FRAC_THRD);
+//
+assign	wstrb_cnt					= 4'($countones(sw_axi_full_if.wstrb));
+assign	uart_tx						= uart_tx_pre;
+assign	flag.ready_to_cfg			= ((cs == TX_STOP_BIT) & (ns != TX_STOP_BIT))
+									| ((cs == TX_IDLE) & (ns != TX_IDLE));
 
-`DEBUG_DEF	reg  [71 : 0]	tff_din       ;
-`DEBUG_DEF	reg 			tff_wr_en     ;
-`DEBUG_DEF	wire			tff_rd_en     ;
-`DEBUG_DEF	reg 			tff_rd_en_pre ;
-`DEBUG_DEF	wire [71 : 0]	tff_dout      ;
-`DEBUG_DEF	reg  [71 : 0]	tff_dout_post ;
-`DEBUG_DEF	wire			tff_full      ;
-`DEBUG_DEF	wire			tff_empty     ;
-`DEBUG_DEF	wire [10 : 0]	tff_data_count;
-`DEBUG_DEF	reg  [3:0]		tff_rd_byte_num;
-
-// _________________________________________________________________________ full write addr
-wire [3 : 0] 		awid    = s_axi_awid   ;
-`DEBUG_DEF	wire [63 : 0]		awaddr  = s_axi_awaddr ;
-wire [7 : 0] 		awlen   = s_axi_awlen  ;
-wire [2 : 0] 		awsize  = s_axi_awsize ;
-wire [1 : 0] 		awburst = s_axi_awburst;
-wire [2 : 0] 		awprot  = s_axi_awprot ;
-`DEBUG_DEF	wire         		awvalid = s_axi_awvalid;
-wire         		awlock  = s_axi_awlock ;
-wire [3 : 0] 		awcache = s_axi_awcache;
-`DEBUG_DEF	reg  				awready;
-`DEBUG_DEF	wire 				aw_hs = awready & awvalid;
-
-assign s_axi_awready = awready;
-
-// _________________________________________________________________________ full write data
-wire				fix_wlast = s_axi_wlast & s_axi_wvalid;
-
-`DEBUG_DEF	wire [63 : 0]		wdata  = s_axi_wdata 	;
-`DEBUG_DEF	wire [7 : 0] 		wstrb  = s_axi_wstrb 	;
-`DEBUG_DEF	wire 				wlast  = fix_wlast 		; // fix smart connect IP's wlast
-`DEBUG_DEF	wire 				wvalid = s_axi_wvalid	;
-`DEBUG_DEF	reg  				wready					;
-`DEBUG_DEF	wire 				w_hs   = wvalid & wready;
-wire 				fix_w_hs = (wstrb == 8'hff) ? w_hs : (w_hs & (strb_cnt == 8));
-reg  [63 : 0]		r1_wdata;
-
-assign s_axi_wready = wready;
-// _________________________________________________________________________ full write resp
-reg  [3:0] 			bid   					;
-reg  [1:0] 			bresp 					;
-reg        			bvalid					;
-wire       			bready = s_axi_bready	;
-wire       			b_hs   = bvalid & bready;
-
-assign s_axi_bid    = bid   ;
-assign s_axi_bresp  = bresp ;
-assign s_axi_bvalid = bvalid;
-
-always@ (posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
-		bvalid <= 1'd0;
-	else if(wlast & bready & w_hs)
-		bvalid <= 1'd1;
+		flag.no_tx_interval	<= 'd0;
+	else if(flag.ready_to_cfg)
+		flag.no_tx_interval <= 'd1;
 	else
-		bvalid <= 1'd0;
+		flag.no_tx_interval <= flag.no_tx_interval;
 end
 
-always@ (posedge clk, posedge rst) begin
+// ================================================================================
+//                               parameter
+// ================================================================================
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		new_tx_para <= '{
+			baud_rate_phase_acc_step_len		: 'd659706, // @9600 bps; @125MHz
+			baud_rate_phase_acc_frac_step_len	: 'd9766656, // @9600 bps; @125MHz
+			data_width							: 'd8,
+			parity_check						: E_PARITY_CHECK_NONE,
+			stop_bit_width						: E_STOP_BIT_1,
+			default								: '0
+		};
+	else if(P_PARA_VALIDITY_CHECK == P_ENABLE)
+		new_tx_para <= '{
+			baud_rate_phase_acc_step_len		: tx_para.baud_rate_phase_acc_step_len,
+			baud_rate_phase_acc_frac_step_len	: (tx_para.baud_rate_phase_acc_frac_step_len <= P_FRAC_THRD)	? tx_para.baud_rate_phase_acc_frac_step_len	: '0,
+			data_width							: ((tx_para.data_width != 4'd0) & (tx_para.data_width <= 4'd8))	? tx_para.data_width						: 4'd8,
+			parity_check						: (tx_para.parity_check < E_PARITY_CHECK_END)					? tx_para.parity_check						: E_PARITY_CHECK_NONE,
+			stop_bit_width						: (tx_para.stop_bit_width < E_STOP_BIT_END)						? tx_para.stop_bit_width					: E_STOP_BIT_1,
+			default								: '0
+		};
+	else
+		new_tx_para <= tx_para;
+end
+
+always_ff @(posedge clk, posedge rst) begin
 	if(rst) begin
-		bid   <= 'd0;
-		bresp <= 'd0;
+		cur_tx_para <= '{
+			baud_rate_phase_acc_step_len		: 'd659706, // @9600 bps; @125MHz
+			baud_rate_phase_acc_frac_step_len	: 'd9766656, // @9600 bps; @125MHz
+			data_width							: 'd8,
+			parity_check						: E_PARITY_CHECK_NONE,
+			stop_bit_width						: E_STOP_BIT_1,
+			default								: '0
+		};
+	end
+	else if(flag.ready_to_cfg)
+		cur_tx_para <= new_tx_para;
+	else
+		cur_tx_para <= cur_tx_para;
+end
+
+// ================================================================================
+//                               axi
+// ================================================================================
+always_ff @(posedge clk, posedge rst) begin
+	if(rst) begin
+		act_axi_wr_max_len <= 'd0;
+		act_axi_wr_eff_len <= 'd0;
 	end
 	else begin
-		bid   <= 'd0;
-		bresp <= 'd0;
+		act_axi_wr_max_len <= tx_ctrl.axi_wr_max_len;
+		act_axi_wr_eff_len <= (tx_ctrl.axi_wr_eff_len > tx_ctrl.axi_wr_max_len) ? tx_ctrl.axi_wr_max_len : tx_ctrl.axi_wr_eff_len;
 	end
 end
 
-// _________________________________________________________________________ full awready
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		bvalid <= 1'd0;
+	else if(act_wlast & w_hs & (~bvalid))
+		bvalid <= 1'd1;
+	else if(b_hs)
+		bvalid <= 1'd0;
+	else
+		bvalid <= bvalid;
+end
+
+always_ff @(posedge clk) begin
+	bid   <= 'd0;
+	bresp <= 'd0;
+end
+
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		awready <= 1'd1;
-	else if (wlast)
+	else if (act_wlast)
 		awready <= 1'd1;
 	else if (aw_hs)
 		awready <= 1'd0;
 	else
 		awready <= awready;
 end
-// _________________________________________________________________________ full wready
-always@(posedge clk, posedge rst) begin
+
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		wready <= 'd0;
 	else if(aw_hs)
 		wready <= 'd1;
-	else if (wlast)
+	else if(act_wlast)
 		wready <= 'd0;
 	else
 		wready <= wready;
 end
 
-always@(posedge clk, posedge rst) begin
-	if(rst) begin
-		r1_wdata <= 'd0;
-		r1_tx_driv_flag <= 'd0;
-	end
-	else begin
-		r1_wdata <= wdata;//strb_fix_data;
-		r1_tx_driv_flag <= tx_driv_flag;
-	end
-end
-
-// _________________________________________________________________________ uart_tx
-always@(posedge clk, posedge rst) begin
-	if(rst)
-		tx_driv_flag_sft <= 'd0;
-	else if(stop_bit_done & (para_stop_bit == STOP_BIT_1P5))
-		tx_driv_flag_sft <= 1'd1;
-	else if(tx_driv_flag)
-		tx_driv_flag_sft <= ~tx_driv_flag_sft;
-	else
-		tx_driv_flag_sft <= tx_driv_flag_sft;
-end
-
+// ================================================================================
+//                               phase accmulator
+// ================================================================================
 always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		phase_sum <= 'd0;
@@ -253,108 +308,105 @@ always_ff @(posedge clk, posedge rst) begin
 		tx_driv_flag_sft <= tx_driv_flag_sft;
 end
 
-always_ff @(posedge clk, posedge rst) begin
-	if(rst)
-		new_tx_para <= '{
-			baud_rate_phase_acc_step_len		: 'd659706, // @9600 bps; @125MHz
-			baud_rate_phase_acc_frac_step_len	: 'd9766656, // @9600 bps; @125MHz
-			data_width							: 'd8,
-			parity_check						: E_PARITY_CHECK_NONE,
-			stop_bit_width						: E_STOP_BIT_1,
-			default								: '0
-		};
-	else if(P_PARA_VALIDITY_CHECK == P_ENABLE)
-		new_tx_para <= '{
-			baud_rate_phase_acc_step_len		: tx_para.baud_rate_phase_acc_step_len,
-			baud_rate_phase_acc_frac_step_len	: (tx_para.baud_rate_phase_acc_frac_step_len <= P_FRAC_THRD)	? tx_para.baud_rate_phase_acc_frac_step_len	: '0,
-			data_width							: ((tx_para.data_width != 4'd0) & (tx_para.data_width <= 4'd8))	? tx_para.data_width						: 4'd8,
-			parity_check						: (tx_para.parity_check < E_PARITY_CHECK_END)					? tx_para.parity_check						: E_PARITY_CHECK_NONE,
-			stop_bit_width						: (tx_para.stop_bit_width < E_STOP_BIT_END)						? tx_para.stop_bit_width					: E_STOP_BIT_1,
-			default								: '0
-		};
-	else
-		new_tx_para <= tx_para;
-end
-
-// ---------------------------------------------------
-// current tx parameter
-// ---------------------------------------------------
-always_ff @(posedge clk, posedge rst) begin
-	if(rst) begin
-		cur_tx_para <= '{
-			baud_rate_phase_acc_step_len		: 'd659706, // @9600 bps; @125MHz
-			baud_rate_phase_acc_frac_step_len	: 'd9766656, // @9600 bps; @125MHz
-			data_width							: 'd8,
-			parity_check						: E_PARITY_CHECK_NONE,
-			stop_bit_width						: E_STOP_BIT_1,
-			default								: '0
-		};
-	end
-	else if(flag.ready_to_cfg)
-		cur_tx_para <= new_tx_para;
-	else
-		cur_tx_para <= cur_tx_para;
-end
-
+// ================================================================================
+//                               fifo
+// ================================================================================
 uart_ff_8k TFF_8K (
-		.clk		(	clk				),
-		.din		(	tff_din       	),
-		.wr_en		(	tff_wr_en     	),
-		.rd_en		(	tff_rd_en     	),
-		.dout		(	tff_dout      	),
-		.full		(	tff_full      	),
-		.empty		(	tff_empty     	),
-		.data_count	(	tff_data_count	)
+	.clk		(	clk					),
+	.din		(	tx_fifo.din       	),
+	.wr_en		(	tx_fifo.wr_en     	),
+	.rd_en		(	tx_fifo.rd_en     	),
+	.dout		(	tx_fifo.dout      	),
+	.full		(	tx_fifo.full      	),
+	.empty		(	tx_fifo.empty     	),
+	.data_count	(	tx_fifo.data_count	)
 );
 
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
-		tff_wr_en <= 'd0;
+		tx_fifo.wr_en <= 'd0;
 	else
-		tff_wr_en <= (!tff_full) & w_hs & (eff_wstrb != 0);//fix_w_hs;
+		tx_fifo.wr_en <= (!tx_fifo.full) & w_hs & (eff_wstrb != 0);//fix_w_hs;
 end
-
-always@(posedge clk, posedge rst) begin
-	if(rst)
-		tff_dout_post <= tff_dout;
-	else if(tff_rd_en_pre)
-		tff_dout_post <= {(tff_dout[71:64] >> tff_rd_strb_right_part_zero_cnt[7]), (tff_dout[63:0] >> (tff_rd_strb_right_part_zero_cnt[7]*8))};
-	else
-		tff_dout_post <= tff_dout_post;
-end
-
-always@(posedge clk, posedge rst) begin
-	if(rst)
-		tff_din <= 'd0;
-	else
-		tff_din <= {eff_wstrb, eff_wdata};//strb_fix_data;
-end
-
-always@(posedge clk, posedge rst) begin
-	if(rst)
-		LR_TFF_USEDW <= 'd0;
-	else
-		LR_TFF_USEDW <= 16'(tff_data_count);
-end
-
-assign tff_rd_en = tff_rd_en_pre;
 
 always_ff @(posedge clk, posedge rst) begin
 	if(rst)
-		tff_rd_en_pre <= 'd0;
-	else begin
-		if(cs == IDLE)
-			tff_rd_en_pre <= (!tff_empty) & (tff_rd_byte_num == 4'd0) & r1_tx_driv_flag & tx_driv_flag_sft;
-		else if(cs == STOP_BIT)
-			tff_rd_en_pre <= stop_bit_done & (!tff_empty) & (tff_rd_byte_num == `BYTE_CNT_THRD/*4'd7*/);
-		else if(cs == PARA_CFG)
-			tff_rd_en_pre <= `CFG_DONE_CDN & (!tff_empty) & (tff_rd_byte_num == `BYTE_CNT_THRD/*4'd7*/) & r1_tx_driv_flag & tx_driv_flag_sft;
-	end
+		fifo_dout_post <= tx_fifo.dout;
+	else if(fifo_rd_en_pre)
+		fifo_dout_post <= {(tx_fifo.dout[71:64] >> fifo_rd_strb_trailing_zeros), (tx_fifo.dout[63:0] >> (fifo_rd_strb_trailing_zeros * 8))};
+	else
+		fifo_dout_post <= fifo_dout_post;
+end
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		tx_fifo.din <= 'd0;
+	else
+		tx_fifo.din <= {eff_wstrb, eff_wdata};//strb_fix_data;
+end
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		tx_status.fifo_usedw <= 'd0;
+	else
+		tx_status.fifo_usedw <= 16'(tx_fifo.data_count);
+end
+
+assign tx_fifo.rd_en = fifo_rd_en_pre;
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		fifo_rd_en_pre <= 'd0;
+	else if(flag.no_tx_interval)
+		if(cs == TX_IDLE)
+			fifo_rd_en_pre <= (!tx_fifo.empty) & (fifo_rd_byte_num == 4'd0) & r1_tx_driv_flag & tx_driv_flag_sft;
+		else if(cs == TX_STOP_BIT)
+			fifo_rd_en_pre <= stop_bit_done & (!tx_fifo.empty) & (fifo_rd_byte_num == fifo_rd_strb_cnt_sat_dec);
+		else
+			fifo_rd_en_pre <= 'd0;
+	else
+		fifo_rd_en_pre <= (!tx_fifo.empty) & (cs == TX_IDLE) & (fifo_rd_byte_num == 4'd0) & r1_tx_driv_flag & tx_driv_flag_sft;
 end
 
 // ================================================================================
-//                               FSM
+//                               priv frame FSM
 // ================================================================================
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		frame_cs <= FRAME_IDLE;
+	else
+		frame_cs <= frame_ns;
+end
+
+always_comb begin
+	case(frame_cs)
+		FRAME_IDLE:
+			if(w_hs)
+				frame_ns = FRAME_CFG;
+			else
+				frame_ns = FRAME_IDLE;
+
+		FRAME_CFG:
+			if(flag.got_payload_len & flag.got_interval_val & flag.got_interval_unit)
+				frame_ns = FRAME_PAYLOAD;
+			else
+				frame_ns = FRAME_CFG;
+
+		FRAME_PAYLOAD:
+			if(flag.got_whole_payload)
+				frame_ns = FRAME_IDLE;
+			else
+				frame_ns = FRAME_PAYLOAD;
+
+		default:
+			frame_ns = FRAME_IDLE;
+	endcase
+end
+
+// ================================================================================
+//                               uart FSM
+// ================================================================================
+
 always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		cs <= TX_IDLE;
@@ -395,7 +447,7 @@ always_comb begin
 	endcase
 end
 
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		tx_cnt <= 'd0;
 	else if(cs == TX_DATA)
@@ -404,125 +456,88 @@ always@(posedge clk, posedge rst) begin
 		tx_cnt <= 'd0;
 end
 
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		tx_stop_bit_cnt <= 'd0;
-	else if(cs == STOP_BIT)
+	else if(cs == TX_STOP_BIT)
 		tx_stop_bit_cnt <= r1_tx_driv_flag ? (tx_stop_bit_cnt + 1'd1) : tx_stop_bit_cnt;
 	else
 		tx_stop_bit_cnt <= 'd0;
 end
 
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		stop_bit_done <= 'd0;
 	else
-		stop_bit_done <= (tx_stop_bit_cnt == (para_stop_bit + 1)) & r1_tx_driv_flag;
+		stop_bit_done <= (tx_stop_bit_cnt == (cur_tx_para.stop_bit_width + 1'd1)) & r1_tx_driv_flag;
 end
 
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
-		tff_rd_byte_num <= 'd0;
-	else if(tff_rd_byte_num >= tff_rd_strb_cnt)
-		tff_rd_byte_num <= 'd0;
-	else if((cs == STOP_BIT ) & stop_bit_done )
-		tff_rd_byte_num <= tff_rd_byte_num + 1'd1;
+		fifo_rd_byte_num <= 'd0;
+	else if(fifo_rd_byte_num >= fifo_rd_strb_cnt)
+		fifo_rd_byte_num <= 'd0;
+	else if((cs == TX_STOP_BIT) & stop_bit_done)
+		fifo_rd_byte_num <= fifo_rd_byte_num + 1'd1;
 	else
-		tff_rd_byte_num <= tff_rd_byte_num;
+		fifo_rd_byte_num <= fifo_rd_byte_num;
 end
 
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
-		p_chk_data <= 'd0;
-	else if(para_parity_chk != P_CHK_NONE)
-		p_chk_data <= (cs == TX_DATA) ? tff_dout_post[(tff_rd_byte_num*8)+:8] : p_chk_data;
+		parity_check_data <= 'd0;
+	else if(cur_tx_para.parity_check != E_PARITY_CHECK_NONE)
+		parity_check_data <= (cs == TX_DATA) ? fifo_dout_post[(fifo_rd_byte_num*8)+:8] : parity_check_data;
 	else
-		p_chk_data <= 'd0;
+		parity_check_data <= 'd0;
 end
 
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
-		r1_UART_TX <= 1'd1;
+		uart_tx_pre <= 1'd1;
 	else if(cs == TX_DATA)
 		case(tx_cnt)
-			0:	r1_UART_TX <= 1'd0;
-			1:	r1_UART_TX <= tff_dout_post[(tff_rd_byte_num*8) + 0];
-			2:	r1_UART_TX <= tff_dout_post[(tff_rd_byte_num*8) + 1];
-			3:	r1_UART_TX <= tff_dout_post[(tff_rd_byte_num*8) + 2];
-			4:	r1_UART_TX <= tff_dout_post[(tff_rd_byte_num*8) + 3];
-			5:	r1_UART_TX <= tff_dout_post[(tff_rd_byte_num*8) + 4];
-			6:	r1_UART_TX <= tff_dout_post[(tff_rd_byte_num*8) + 5];
-			7:	r1_UART_TX <= tff_dout_post[(tff_rd_byte_num*8) + 6];
-			8:	r1_UART_TX <= tff_dout_post[(tff_rd_byte_num*8) + 7];
-		default:r1_UART_TX <= 1'd1;
+			4'd0: uart_tx_pre <= 1'd0;
+			4'd1: uart_tx_pre <= fifo_dout_post[(fifo_rd_byte_num*8) + 0];
+			4'd2: uart_tx_pre <= fifo_dout_post[(fifo_rd_byte_num*8) + 1];
+			4'd3: uart_tx_pre <= fifo_dout_post[(fifo_rd_byte_num*8) + 2];
+			4'd4: uart_tx_pre <= fifo_dout_post[(fifo_rd_byte_num*8) + 3];
+			4'd5: uart_tx_pre <= fifo_dout_post[(fifo_rd_byte_num*8) + 4];
+			4'd6: uart_tx_pre <= fifo_dout_post[(fifo_rd_byte_num*8) + 5];
+			4'd7: uart_tx_pre <= fifo_dout_post[(fifo_rd_byte_num*8) + 6];
+			4'd8: uart_tx_pre <= fifo_dout_post[(fifo_rd_byte_num*8) + 7];
+			default:uart_tx_pre <= 1'd1;
 	endcase
-	else if(cs == PARITY_CHK)
-		r1_UART_TX <=   (para_parity_chk == P_CHK_ODD  ) ? (^p_chk_data)
-					:(para_parity_chk == P_CHK_EVEN ) ? (~^p_chk_data)
-					:(para_parity_chk == P_CHK_MARK ) ? 1'd1
-					:(para_parity_chk == P_CHK_SPACE) ? 1'd0 : 1'd1;
-	else if(cs == STOP_BIT)
-		r1_UART_TX <= 1'd1;
+	else if(cs == TX_PARITY_CHECK)
+		uart_tx_pre <=
+					 (cur_tx_para.parity_check == E_PARITY_CHECK_ODD  ) ? (^parity_check_data)
+					:(cur_tx_para.parity_check == E_PARITY_CHECK_EVEN ) ? (~^parity_check_data)
+					:(cur_tx_para.parity_check == E_PARITY_CHECK_MARK ) ? 1'd1
+					:(cur_tx_para.parity_check == E_PARITY_CHECK_SPACE) ? 1'd0 : 1'd1;
+	else if(cs == TX_STOP_BIT)
+		uart_tx_pre <= 1'd1;
 	else
-		r1_UART_TX <= r1_UART_TX;
+		uart_tx_pre <= uart_tx_pre;
 end
 
-assign strb_cnt = w_hs ? (strb_cnt_latch +
-wstrb[7 ] + wstrb[6 ] + wstrb[5 ] + wstrb[4 ] +
-wstrb[3 ] + wstrb[2 ] + wstrb[1 ] + wstrb[0 ]) : strb_cnt_latch;
+for(genvar i = 0; i < 8; i = i + 1) begin : GF_STRB
+	assign eff_wdata[8*i+:8] = (w_hs & eff_wstrb[i]) ? sw_axi_full_if.wdata[8*i+:8] : '0;
+end: GF_STRB
 
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
-		strb_cnt_latch <= 'd0;
-	else if(strb_cnt >= 8)
-		strb_cnt_latch <= 'd0;
+		fifo_rd_strb_cnt <= 'd0;
+	else if(fifo_rd_en_pre)
+		fifo_rd_strb_cnt <= 4'($countones(tx_fifo.dout[71:64]));
 	else
-		strb_cnt_latch <= strb_cnt;
+		fifo_rd_strb_cnt <= fifo_rd_strb_cnt;
 end
 
-// assign strb_fix_data = (wdata & wstrb) | (strb_fix_data_latch & (~wstrb));
-
-generate for (i = 0; i < 8; i = i + 1) begin : GF_STRB
-
-	assign strb_fix_data[8*i+:8] = w_hs ? (({8{wstrb[i]}} & wdata[8*i+:8]) | ({8{(~wstrb[i])}} & strb_fix_data_latch[8*i+:8])) : strb_fix_data_latch[8*i+:8];
-
-	if(i == 0)
-		assign tff_rd_strb_right_part_zero_cnt[i] = (!tff_rd_en_pre) ? 4'd0 : {3'd0, (!tff_dout[64+i])};
-	else
-		assign tff_rd_strb_right_part_zero_cnt[i] = (!tff_rd_en_pre) ? 4'd0 : (tff_rd_strb_right_part_zero_cnt[i-1] != i) ? tff_rd_strb_right_part_zero_cnt[i-1] : (tff_rd_strb_right_part_zero_cnt[i-1] + (!tff_dout[64+i]));
-
-	if(i == 0)
-		assign wstrb_right_part_zero_cnt[i] = (!w_hs) ? 4'd0 : {3'd0, (!wstrb[i])};
-	else
-		assign wstrb_right_part_zero_cnt[i] = (!w_hs) ? 4'd0 : (wstrb_right_part_zero_cnt[i-1] != i) ? wstrb_right_part_zero_cnt[i-1] : (wstrb_right_part_zero_cnt[i-1] + (!wstrb[i]));
-
-	assign eff_wdata[8*i+:8] = w_hs ? ({8{eff_wstrb[i]}} & wdata[8*i+:8]) : 8'd0;
-
-end endgenerate
-
-always@(posedge clk, posedge rst) begin
-	if(rst)
-		tff_rd_strb_cnt <= 'd0;
-	else if(tff_rd_en_pre)
-		tff_rd_strb_cnt <= (tff_dout[71] + tff_dout[70] + tff_dout[69] + tff_dout[68] + tff_dout[67] + tff_dout[66] + tff_dout[65] + tff_dout[64]);
-	else
-		tff_rd_strb_cnt <= tff_rd_strb_cnt;
-end
-
-always@(posedge clk, posedge rst) begin
-	if(rst)
-		strb_fix_data_latch <= 'd0;
-	else
-		strb_fix_data_latch <= strb_fix_data;
-end
-
-assign UART_TX = r1_UART_TX;
-
-always@(posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		axi_wr_cnt <= 'd0;
 	else if(w_hs)
-		if((axi_wr_cnt + wstrb_cnt) >= LR_AXI_WR_MAX_LEN)
+		if((axi_wr_cnt + wstrb_cnt) >= act_axi_wr_max_len)
 			axi_wr_cnt <= 'd0;
 		else
 			axi_wr_cnt <= axi_wr_cnt + wstrb_cnt;
@@ -530,22 +545,39 @@ always@(posedge clk, posedge rst) begin
 		axi_wr_cnt <= axi_wr_cnt;
 end
 
-
-always@(*) begin
-	if(w_hs & (axi_wr_cnt >= LR_AXI_WR_EFF_LEN))
+always_comb begin
+	if(w_hs & (axi_wr_cnt >= act_axi_wr_eff_len))
 		eff_wstrb = 'd0;
-	else if(w_hs & ((axi_wr_cnt + wstrb_cnt) >= LR_AXI_WR_EFF_LEN) & (axi_wr_cnt < LR_AXI_WR_EFF_LEN))
-		eff_wstrb = wstrb & (8'hff >> `EFF_STRB_SFT);
+	else if(w_hs & ((axi_wr_cnt + wstrb_cnt) >= act_axi_wr_eff_len) & (axi_wr_cnt < act_axi_wr_eff_len))
+		eff_wstrb = sw_axi_full_if.wstrb & (8'hff >> eff_wstrb_sft);
 	else
-		eff_wstrb = wstrb;
+		eff_wstrb = sw_axi_full_if.wstrb;
+end
+
+always_comb begin
+	eff_wstrb_sft = (8 - ((act_axi_wr_eff_len - axi_wr_cnt) + wstrb_trailing_zeros));
+end
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		slid_wind <= 'd0;
+	else if(w_hs)
+		slid_wind <= ;
 end
 
 // ================================================================================
+//                               debug
+// ================================================================================
+/*
+ */
+// ================================================================================
 //                               undef
 // ================================================================================
+
 `ifdef D
 `undef D
 `endif
+
 `ifdef DEBUG_axi_uart_tx
 `undef DEBUG_axi_uart_tx
 `endif

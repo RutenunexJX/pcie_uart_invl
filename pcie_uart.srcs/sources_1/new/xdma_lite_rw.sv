@@ -18,6 +18,7 @@
 // Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
+`include "_svh.svh"
 //`define DEBUG_xdma_lite_rw
 
 module xdma_lite_rw #(
@@ -27,33 +28,7 @@ module xdma_lite_rw #(
     input                   clk								,
     input                   rst								,
 	//
-    input       [31:0]      lite_awaddr						,
-    input       [2:0]       lite_awprot						,
-    output                  lite_awready					,
-    input                   lite_awvalid					,
-
-    input       [31:0]      lite_wdata						,
-    output                  lite_wready						,
-    input       [3:0]       lite_wstrb						,
-    input                   lite_wvalid						,
-
-
-    input                   lite_bready						,
-    output      [1:0]       lite_bresp 						,
-    output                  lite_bvalid						,
-
-    input       [31:0]      lite_araddr 					,
-    input       [2:0]       lite_arprot 					,
-    output                  lite_arready					,
-    input                   lite_arvalid					,
-
-    output      [31:0]      lite_rdata 						,
-    input                   lite_rready						,
-    output      [1:0]       lite_rresp 						,
-    output                  lite_rvalid						,
-	//
-	input 		[31:0]		LOGIC_VERSION    				,
-	input 		[31:0]		LOGIC_SUB_VERSION				,
+    axi_lite_if.slave		s_axi_lite_if					,
 	//_____________________________________________________________SYSCTRL
 	output	reg [15:0]		LITE_REG_AXI_RD_LEN				,
 	output	reg [15:0]		LITE_REG_AXI_WR_MAX_LEN			,
@@ -474,46 +449,46 @@ reg			r1_ar_hs;
 
 // ____________________________________________________w addr
 reg  		awready;
-wire [31:0] awaddr  = lite_awaddr      ;
-wire [2:0] 	awprot  = lite_awprot      ;
-wire 		awvalid = lite_awvalid     ;
+wire [31:0] awaddr  = s_axi_lite_if.awaddr      ;
+wire [2:0] 	awprot  = s_axi_lite_if.awprot      ;
+wire 		awvalid = s_axi_lite_if.awvalid     ;
 wire 		aw_hs   = awvalid & awready;
 
-assign lite_awready = awready;
+assign s_axi_lite_if.awready = awready;
 // ____________________________________________________w data
 reg  		wready;
-wire [31:0] wdata 	= lite_wdata     ;
-wire [3:0]  wstrb 	= lite_wstrb     ;
-wire 		wvalid 	= lite_wvalid    ;
+wire [31:0] wdata 	= s_axi_lite_if.wdata     ;
+wire [3:0]  wstrb 	= s_axi_lite_if.wstrb     ;
+wire 		wvalid 	= s_axi_lite_if.wvalid    ;
 wire 		w_hs   	= wvalid & wready;
 
-assign lite_wready = wready;
+assign s_axi_lite_if.wready = wready;
 // ____________________________________________________w resp
 reg [1:0] 	bresp ;
 reg 		bvalid;
-wire 		bready 	= lite_bready    ;
+wire 		bready 	= s_axi_lite_if.bready    ;
 wire 		b_hs 	= bvalid & bready;
 
-assign lite_bresp  = bresp ;
-assign lite_bvalid = bvalid;
+assign s_axi_lite_if.bresp  = bresp ;
+assign s_axi_lite_if.bvalid = bvalid;
 // ____________________________________________________r addr
 reg 		arready;
-wire [31:0] araddr 	= lite_araddr 	   ;
-wire [2:0] 	arprot 	= lite_arprot 	   ;
-wire 		arvalid = lite_arvalid 	   ;
+wire [31:0] araddr 	= s_axi_lite_if.araddr 	   ;
+wire [2:0] 	arprot 	= s_axi_lite_if.arprot 	   ;
+wire 		arvalid = s_axi_lite_if.arvalid 	   ;
 wire 		ar_hs 	= arvalid & arready;
 
-assign lite_arready = arready;
+assign s_axi_lite_if.arready = arready;
 // ____________________________________________________r data
 reg [31:0]	rdata ;
 reg [1:0] 	rresp ;
 reg 		rvalid;
-wire 		rready	= lite_rready    ;
+wire 		rready	= s_axi_lite_if.rready    ;
 wire 		r_hs 	= rvalid & rready;
 
-assign lite_rdata  = rdata ;
-assign lite_rresp  = rresp ;
-assign lite_rvalid = rvalid;
+assign s_axi_lite_if.rdata  = rdata ;
+assign s_axi_lite_if.rresp  = rresp ;
+assign s_axi_lite_if.rvalid = rvalid;
 
 always@(posedge clk,posedge rst) begin
     if(rst)
@@ -837,8 +812,8 @@ always@(posedge clk, posedge rst) begin
 	endcase
 	else begin
 		bar_reg[LITE_ONLINE			] <= 32'h5a5a_bcbc;
-		bar_reg[LOG_VERSION			] <= LOGIC_VERSION;
-		bar_reg[LOG_SUB_VERSION		] <= LOGIC_SUB_VERSION;
+		bar_reg[LOG_VERSION			] <= P_VERSION;
+		bar_reg[LOG_SUB_VERSION		] <= P_SUB_VERSION;
 
 		bar_reg[R1_RFF_USEDW		] <= 32'(LITE_REG_R1_RFF_USEDW);
 		bar_reg[R2_RFF_USEDW		] <= 32'(LITE_REG_R2_RFF_USEDW);
@@ -1030,164 +1005,164 @@ always@(posedge clk, posedge rst) begin
 		LITE_REG_T12_AXI_WR_EFF_LEN 	<= 'd0;
 	end
 	else begin
-		LITE_REG_AXI_RD_LEN				<= (!w_hs) ?  bar_reg[AXI_RD_LEN				]: LITE_REG_AXI_RD_LEN				;
-		LITE_REG_AXI_WR_MAX_LEN			<= (!w_hs) ?  bar_reg[AXI_WR_MAX_LEN			]: LITE_REG_AXI_WR_MAX_LEN			;
+		LITE_REG_AXI_RD_LEN				<= (!w_hs) ?  bar_reg[AXI_RD_LEN				][$bits(LITE_REG_AXI_RD_LEN						) - 1:0]: LITE_REG_AXI_RD_LEN			;
+		LITE_REG_AXI_WR_MAX_LEN			<= (!w_hs) ?  bar_reg[AXI_WR_MAX_LEN			][$bits(LITE_REG_AXI_WR_MAX_LEN					) - 1:0]: LITE_REG_AXI_WR_MAX_LEN		;
 
-		LITE_REG_R1_BAUD_RATE			<= (!w_hs) ?  bar_reg[R1_BAUD_RATE				]: LITE_REG_R1_BAUD_RATE			;
-		LITE_REG_R1_STOP_BIT			<= (!w_hs) ?  bar_reg[R1_STOP_BIT				]: LITE_REG_R1_STOP_BIT				;
-		LITE_REG_R1_P_CHK				<= (!w_hs) ?  bar_reg[R1_P_CHK					]: LITE_REG_R1_P_CHK				;
-		LITE_REG_R1_D_WIDTH				<= (!w_hs) ?  bar_reg[R1_D_WIDTH				]: LITE_REG_R1_D_WIDTH				;
-		LITE_REG_R1_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R1_AXI_BRUST_LEN			]: LITE_REG_R1_AXI_BRUST_LEN		;
-		LITE_REG_R1_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R1_TIMEOUT_THRD			]: LITE_REG_R1_TIMEOUT_THRD			;
+		LITE_REG_R1_BAUD_RATE			<= (!w_hs) ?  bar_reg[R1_BAUD_RATE				][$bits(LITE_REG_R1_BAUD_RATE					) - 1:0]: LITE_REG_R1_BAUD_RATE			;
+		LITE_REG_R1_STOP_BIT			<= (!w_hs) ?  bar_reg[R1_STOP_BIT				][$bits(LITE_REG_R1_STOP_BIT					) - 1:0]: LITE_REG_R1_STOP_BIT			;
+		LITE_REG_R1_P_CHK				<= (!w_hs) ?  bar_reg[R1_P_CHK					][$bits(LITE_REG_R1_P_CHK						) - 1:0]: LITE_REG_R1_P_CHK				;
+		LITE_REG_R1_D_WIDTH				<= (!w_hs) ?  bar_reg[R1_D_WIDTH				][$bits(LITE_REG_R1_D_WIDTH						) - 1:0]: LITE_REG_R1_D_WIDTH			;
+		LITE_REG_R1_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R1_AXI_BRUST_LEN			][$bits(LITE_REG_R1_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R1_AXI_BRUST_LEN		;
+		LITE_REG_R1_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R1_TIMEOUT_THRD			][$bits(LITE_REG_R1_TIMEOUT_THRD				) - 1:0]: LITE_REG_R1_TIMEOUT_THRD		;
 
-		LITE_REG_R2_BAUD_RATE			<= (!w_hs) ?  bar_reg[R2_BAUD_RATE				]: LITE_REG_R2_BAUD_RATE			;
-		LITE_REG_R2_STOP_BIT			<= (!w_hs) ?  bar_reg[R2_STOP_BIT				]: LITE_REG_R2_STOP_BIT				;
-		LITE_REG_R2_P_CHK				<= (!w_hs) ?  bar_reg[R2_P_CHK					]: LITE_REG_R2_P_CHK				;
-		LITE_REG_R2_D_WIDTH				<= (!w_hs) ?  bar_reg[R2_D_WIDTH				]: LITE_REG_R2_D_WIDTH				;
-		LITE_REG_R2_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R2_AXI_BRUST_LEN			]: LITE_REG_R2_AXI_BRUST_LEN		;
-		LITE_REG_R2_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R2_TIMEOUT_THRD			]: LITE_REG_R2_TIMEOUT_THRD			;
+		LITE_REG_R2_BAUD_RATE			<= (!w_hs) ?  bar_reg[R2_BAUD_RATE				][$bits(LITE_REG_R2_BAUD_RATE					) - 1:0]: LITE_REG_R2_BAUD_RATE			;
+		LITE_REG_R2_STOP_BIT			<= (!w_hs) ?  bar_reg[R2_STOP_BIT				][$bits(LITE_REG_R2_STOP_BIT					) - 1:0]: LITE_REG_R2_STOP_BIT			;
+		LITE_REG_R2_P_CHK				<= (!w_hs) ?  bar_reg[R2_P_CHK					][$bits(LITE_REG_R2_P_CHK						) - 1:0]: LITE_REG_R2_P_CHK				;
+		LITE_REG_R2_D_WIDTH				<= (!w_hs) ?  bar_reg[R2_D_WIDTH				][$bits(LITE_REG_R2_D_WIDTH						) - 1:0]: LITE_REG_R2_D_WIDTH			;
+		LITE_REG_R2_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R2_AXI_BRUST_LEN			][$bits(LITE_REG_R2_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R2_AXI_BRUST_LEN		;
+		LITE_REG_R2_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R2_TIMEOUT_THRD			][$bits(LITE_REG_R2_TIMEOUT_THRD				) - 1:0]: LITE_REG_R2_TIMEOUT_THRD		;
 
-		LITE_REG_R3_BAUD_RATE			<= (!w_hs) ?  bar_reg[R3_BAUD_RATE				]: LITE_REG_R3_BAUD_RATE			;
-		LITE_REG_R3_STOP_BIT			<= (!w_hs) ?  bar_reg[R3_STOP_BIT				]: LITE_REG_R3_STOP_BIT				;
-		LITE_REG_R3_P_CHK				<= (!w_hs) ?  bar_reg[R3_P_CHK					]: LITE_REG_R3_P_CHK				;
-		LITE_REG_R3_D_WIDTH				<= (!w_hs) ?  bar_reg[R3_D_WIDTH				]: LITE_REG_R3_D_WIDTH				;
-		LITE_REG_R3_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R3_AXI_BRUST_LEN			]: LITE_REG_R3_AXI_BRUST_LEN		;
-		LITE_REG_R3_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R3_TIMEOUT_THRD			]: LITE_REG_R3_TIMEOUT_THRD			;
+		LITE_REG_R3_BAUD_RATE			<= (!w_hs) ?  bar_reg[R3_BAUD_RATE				][$bits(LITE_REG_R3_BAUD_RATE					) - 1:0]: LITE_REG_R3_BAUD_RATE			;
+		LITE_REG_R3_STOP_BIT			<= (!w_hs) ?  bar_reg[R3_STOP_BIT				][$bits(LITE_REG_R3_STOP_BIT					) - 1:0]: LITE_REG_R3_STOP_BIT			;
+		LITE_REG_R3_P_CHK				<= (!w_hs) ?  bar_reg[R3_P_CHK					][$bits(LITE_REG_R3_P_CHK						) - 1:0]: LITE_REG_R3_P_CHK				;
+		LITE_REG_R3_D_WIDTH				<= (!w_hs) ?  bar_reg[R3_D_WIDTH				][$bits(LITE_REG_R3_D_WIDTH						) - 1:0]: LITE_REG_R3_D_WIDTH			;
+		LITE_REG_R3_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R3_AXI_BRUST_LEN			][$bits(LITE_REG_R3_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R3_AXI_BRUST_LEN		;
+		LITE_REG_R3_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R3_TIMEOUT_THRD			][$bits(LITE_REG_R3_TIMEOUT_THRD				) - 1:0]: LITE_REG_R3_TIMEOUT_THRD		;
 
-		LITE_REG_R4_BAUD_RATE			<= (!w_hs) ?  bar_reg[R4_BAUD_RATE				]: LITE_REG_R4_BAUD_RATE			;
-		LITE_REG_R4_STOP_BIT			<= (!w_hs) ?  bar_reg[R4_STOP_BIT				]: LITE_REG_R4_STOP_BIT				;
-		LITE_REG_R4_P_CHK				<= (!w_hs) ?  bar_reg[R4_P_CHK					]: LITE_REG_R4_P_CHK				;
-		LITE_REG_R4_D_WIDTH				<= (!w_hs) ?  bar_reg[R4_D_WIDTH				]: LITE_REG_R4_D_WIDTH				;
-		LITE_REG_R4_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R4_AXI_BRUST_LEN			]: LITE_REG_R4_AXI_BRUST_LEN		;
-		LITE_REG_R4_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R4_TIMEOUT_THRD			]: LITE_REG_R4_TIMEOUT_THRD			;
+		LITE_REG_R4_BAUD_RATE			<= (!w_hs) ?  bar_reg[R4_BAUD_RATE				][$bits(LITE_REG_R4_BAUD_RATE					) - 1:0]: LITE_REG_R4_BAUD_RATE			;
+		LITE_REG_R4_STOP_BIT			<= (!w_hs) ?  bar_reg[R4_STOP_BIT				][$bits(LITE_REG_R4_STOP_BIT					) - 1:0]: LITE_REG_R4_STOP_BIT			;
+		LITE_REG_R4_P_CHK				<= (!w_hs) ?  bar_reg[R4_P_CHK					][$bits(LITE_REG_R4_P_CHK						) - 1:0]: LITE_REG_R4_P_CHK				;
+		LITE_REG_R4_D_WIDTH				<= (!w_hs) ?  bar_reg[R4_D_WIDTH				][$bits(LITE_REG_R4_D_WIDTH						) - 1:0]: LITE_REG_R4_D_WIDTH			;
+		LITE_REG_R4_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R4_AXI_BRUST_LEN			][$bits(LITE_REG_R4_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R4_AXI_BRUST_LEN		;
+		LITE_REG_R4_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R4_TIMEOUT_THRD			][$bits(LITE_REG_R4_TIMEOUT_THRD				) - 1:0]: LITE_REG_R4_TIMEOUT_THRD		;
 
-		LITE_REG_R5_BAUD_RATE			<= (!w_hs) ?  bar_reg[R5_BAUD_RATE				]: LITE_REG_R5_BAUD_RATE			;
-		LITE_REG_R5_STOP_BIT			<= (!w_hs) ?  bar_reg[R5_STOP_BIT				]: LITE_REG_R5_STOP_BIT				;
-		LITE_REG_R5_P_CHK				<= (!w_hs) ?  bar_reg[R5_P_CHK					]: LITE_REG_R5_P_CHK				;
-		LITE_REG_R5_D_WIDTH				<= (!w_hs) ?  bar_reg[R5_D_WIDTH				]: LITE_REG_R5_D_WIDTH				;
-		LITE_REG_R5_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R5_AXI_BRUST_LEN			]: LITE_REG_R5_AXI_BRUST_LEN		;
-		LITE_REG_R5_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R5_TIMEOUT_THRD			]: LITE_REG_R5_TIMEOUT_THRD			;
+		LITE_REG_R5_BAUD_RATE			<= (!w_hs) ?  bar_reg[R5_BAUD_RATE				][$bits(LITE_REG_R5_BAUD_RATE					) - 1:0]: LITE_REG_R5_BAUD_RATE			;
+		LITE_REG_R5_STOP_BIT			<= (!w_hs) ?  bar_reg[R5_STOP_BIT				][$bits(LITE_REG_R5_STOP_BIT					) - 1:0]: LITE_REG_R5_STOP_BIT			;
+		LITE_REG_R5_P_CHK				<= (!w_hs) ?  bar_reg[R5_P_CHK					][$bits(LITE_REG_R5_P_CHK						) - 1:0]: LITE_REG_R5_P_CHK				;
+		LITE_REG_R5_D_WIDTH				<= (!w_hs) ?  bar_reg[R5_D_WIDTH				][$bits(LITE_REG_R5_D_WIDTH						) - 1:0]: LITE_REG_R5_D_WIDTH			;
+		LITE_REG_R5_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R5_AXI_BRUST_LEN			][$bits(LITE_REG_R5_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R5_AXI_BRUST_LEN		;
+		LITE_REG_R5_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R5_TIMEOUT_THRD			][$bits(LITE_REG_R5_TIMEOUT_THRD				) - 1:0]: LITE_REG_R5_TIMEOUT_THRD		;
 
-		LITE_REG_R6_BAUD_RATE			<= (!w_hs) ?  bar_reg[R6_BAUD_RATE				]: LITE_REG_R6_BAUD_RATE			;
-		LITE_REG_R6_STOP_BIT			<= (!w_hs) ?  bar_reg[R6_STOP_BIT				]: LITE_REG_R6_STOP_BIT				;
-		LITE_REG_R6_P_CHK				<= (!w_hs) ?  bar_reg[R6_P_CHK					]: LITE_REG_R6_P_CHK				;
-		LITE_REG_R6_D_WIDTH				<= (!w_hs) ?  bar_reg[R6_D_WIDTH				]: LITE_REG_R6_D_WIDTH				;
-		LITE_REG_R6_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R6_AXI_BRUST_LEN			]: LITE_REG_R6_AXI_BRUST_LEN		;
-		LITE_REG_R6_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R6_TIMEOUT_THRD			]: LITE_REG_R6_TIMEOUT_THRD			;
+		LITE_REG_R6_BAUD_RATE			<= (!w_hs) ?  bar_reg[R6_BAUD_RATE				][$bits(LITE_REG_R6_BAUD_RATE					) - 1:0]: LITE_REG_R6_BAUD_RATE			;
+		LITE_REG_R6_STOP_BIT			<= (!w_hs) ?  bar_reg[R6_STOP_BIT				][$bits(LITE_REG_R6_STOP_BIT					) - 1:0]: LITE_REG_R6_STOP_BIT			;
+		LITE_REG_R6_P_CHK				<= (!w_hs) ?  bar_reg[R6_P_CHK					][$bits(LITE_REG_R6_P_CHK						) - 1:0]: LITE_REG_R6_P_CHK				;
+		LITE_REG_R6_D_WIDTH				<= (!w_hs) ?  bar_reg[R6_D_WIDTH				][$bits(LITE_REG_R6_D_WIDTH						) - 1:0]: LITE_REG_R6_D_WIDTH			;
+		LITE_REG_R6_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R6_AXI_BRUST_LEN			][$bits(LITE_REG_R6_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R6_AXI_BRUST_LEN		;
+		LITE_REG_R6_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R6_TIMEOUT_THRD			][$bits(LITE_REG_R6_TIMEOUT_THRD				) - 1:0]: LITE_REG_R6_TIMEOUT_THRD		;
 
-		LITE_REG_R7_BAUD_RATE			<= (!w_hs) ?  bar_reg[R7_BAUD_RATE				]: LITE_REG_R7_BAUD_RATE			;
-		LITE_REG_R7_STOP_BIT			<= (!w_hs) ?  bar_reg[R7_STOP_BIT				]: LITE_REG_R7_STOP_BIT				;
-		LITE_REG_R7_P_CHK				<= (!w_hs) ?  bar_reg[R7_P_CHK					]: LITE_REG_R7_P_CHK				;
-		LITE_REG_R7_D_WIDTH				<= (!w_hs) ?  bar_reg[R7_D_WIDTH				]: LITE_REG_R7_D_WIDTH				;
-		LITE_REG_R7_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R7_AXI_BRUST_LEN			]: LITE_REG_R7_AXI_BRUST_LEN		;
-		LITE_REG_R7_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R7_TIMEOUT_THRD			]: LITE_REG_R7_TIMEOUT_THRD			;
+		LITE_REG_R7_BAUD_RATE			<= (!w_hs) ?  bar_reg[R7_BAUD_RATE				][$bits(LITE_REG_R7_BAUD_RATE					) - 1:0]: LITE_REG_R7_BAUD_RATE			;
+		LITE_REG_R7_STOP_BIT			<= (!w_hs) ?  bar_reg[R7_STOP_BIT				][$bits(LITE_REG_R7_STOP_BIT					) - 1:0]: LITE_REG_R7_STOP_BIT			;
+		LITE_REG_R7_P_CHK				<= (!w_hs) ?  bar_reg[R7_P_CHK					][$bits(LITE_REG_R7_P_CHK						) - 1:0]: LITE_REG_R7_P_CHK				;
+		LITE_REG_R7_D_WIDTH				<= (!w_hs) ?  bar_reg[R7_D_WIDTH				][$bits(LITE_REG_R7_D_WIDTH						) - 1:0]: LITE_REG_R7_D_WIDTH			;
+		LITE_REG_R7_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R7_AXI_BRUST_LEN			][$bits(LITE_REG_R7_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R7_AXI_BRUST_LEN		;
+		LITE_REG_R7_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R7_TIMEOUT_THRD			][$bits(LITE_REG_R7_TIMEOUT_THRD				) - 1:0]: LITE_REG_R7_TIMEOUT_THRD		;
 
-		LITE_REG_R8_BAUD_RATE			<= (!w_hs) ?  bar_reg[R8_BAUD_RATE				]: LITE_REG_R8_BAUD_RATE			;
-		LITE_REG_R8_STOP_BIT			<= (!w_hs) ?  bar_reg[R8_STOP_BIT				]: LITE_REG_R8_STOP_BIT				;
-		LITE_REG_R8_P_CHK				<= (!w_hs) ?  bar_reg[R8_P_CHK					]: LITE_REG_R8_P_CHK				;
-		LITE_REG_R8_D_WIDTH				<= (!w_hs) ?  bar_reg[R8_D_WIDTH				]: LITE_REG_R8_D_WIDTH				;
-		LITE_REG_R8_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R8_AXI_BRUST_LEN			]: LITE_REG_R8_AXI_BRUST_LEN		;
-		LITE_REG_R8_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R8_TIMEOUT_THRD			]: LITE_REG_R8_TIMEOUT_THRD			;
+		LITE_REG_R8_BAUD_RATE			<= (!w_hs) ?  bar_reg[R8_BAUD_RATE				][$bits(LITE_REG_R8_BAUD_RATE					) - 1:0]: LITE_REG_R8_BAUD_RATE			;
+		LITE_REG_R8_STOP_BIT			<= (!w_hs) ?  bar_reg[R8_STOP_BIT				][$bits(LITE_REG_R8_STOP_BIT					) - 1:0]: LITE_REG_R8_STOP_BIT			;
+		LITE_REG_R8_P_CHK				<= (!w_hs) ?  bar_reg[R8_P_CHK					][$bits(LITE_REG_R8_P_CHK						) - 1:0]: LITE_REG_R8_P_CHK				;
+		LITE_REG_R8_D_WIDTH				<= (!w_hs) ?  bar_reg[R8_D_WIDTH				][$bits(LITE_REG_R8_D_WIDTH						) - 1:0]: LITE_REG_R8_D_WIDTH			;
+		LITE_REG_R8_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R8_AXI_BRUST_LEN			][$bits(LITE_REG_R8_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R8_AXI_BRUST_LEN		;
+		LITE_REG_R8_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R8_TIMEOUT_THRD			][$bits(LITE_REG_R8_TIMEOUT_THRD				) - 1:0]: LITE_REG_R8_TIMEOUT_THRD		;
 
-		LITE_REG_R9_BAUD_RATE			<= (!w_hs) ?  bar_reg[R9_BAUD_RATE				]: LITE_REG_R9_BAUD_RATE			;
-		LITE_REG_R9_STOP_BIT			<= (!w_hs) ?  bar_reg[R9_STOP_BIT				]: LITE_REG_R9_STOP_BIT				;
-		LITE_REG_R9_P_CHK				<= (!w_hs) ?  bar_reg[R9_P_CHK					]: LITE_REG_R9_P_CHK				;
-		LITE_REG_R9_D_WIDTH				<= (!w_hs) ?  bar_reg[R9_D_WIDTH				]: LITE_REG_R9_D_WIDTH				;
-		LITE_REG_R9_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R9_AXI_BRUST_LEN			]: LITE_REG_R9_AXI_BRUST_LEN		;
-		LITE_REG_R9_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R9_TIMEOUT_THRD			]: LITE_REG_R9_TIMEOUT_THRD			;
+		LITE_REG_R9_BAUD_RATE			<= (!w_hs) ?  bar_reg[R9_BAUD_RATE				][$bits(LITE_REG_R9_BAUD_RATE					) - 1:0]: LITE_REG_R9_BAUD_RATE			;
+		LITE_REG_R9_STOP_BIT			<= (!w_hs) ?  bar_reg[R9_STOP_BIT				][$bits(LITE_REG_R9_STOP_BIT					) - 1:0]: LITE_REG_R9_STOP_BIT			;
+		LITE_REG_R9_P_CHK				<= (!w_hs) ?  bar_reg[R9_P_CHK					][$bits(LITE_REG_R9_P_CHK						) - 1:0]: LITE_REG_R9_P_CHK				;
+		LITE_REG_R9_D_WIDTH				<= (!w_hs) ?  bar_reg[R9_D_WIDTH				][$bits(LITE_REG_R9_D_WIDTH						) - 1:0]: LITE_REG_R9_D_WIDTH			;
+		LITE_REG_R9_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R9_AXI_BRUST_LEN			][$bits(LITE_REG_R9_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R9_AXI_BRUST_LEN		;
+		LITE_REG_R9_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R9_TIMEOUT_THRD			][$bits(LITE_REG_R9_TIMEOUT_THRD				) - 1:0]: LITE_REG_R9_TIMEOUT_THRD		;
 
-		LITE_REG_R10_BAUD_RATE			<= (!w_hs) ?  bar_reg[R10_BAUD_RATE				]: LITE_REG_R10_BAUD_RATE			;
-		LITE_REG_R10_STOP_BIT			<= (!w_hs) ?  bar_reg[R10_STOP_BIT				]: LITE_REG_R10_STOP_BIT			;
-		LITE_REG_R10_P_CHK				<= (!w_hs) ?  bar_reg[R10_P_CHK					]: LITE_REG_R10_P_CHK				;
-		LITE_REG_R10_D_WIDTH			<= (!w_hs) ?  bar_reg[R10_D_WIDTH				]: LITE_REG_R10_D_WIDTH				;
-		LITE_REG_R10_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R10_AXI_BRUST_LEN			]: LITE_REG_R10_AXI_BRUST_LEN		;
-		LITE_REG_R10_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R10_TIMEOUT_THRD			]: LITE_REG_R10_TIMEOUT_THRD		;
+		LITE_REG_R10_BAUD_RATE			<= (!w_hs) ?  bar_reg[R10_BAUD_RATE				][$bits(LITE_REG_R10_BAUD_RATE					) - 1:0]: LITE_REG_R10_BAUD_RATE		;
+		LITE_REG_R10_STOP_BIT			<= (!w_hs) ?  bar_reg[R10_STOP_BIT				][$bits(LITE_REG_R10_STOP_BIT					) - 1:0]: LITE_REG_R10_STOP_BIT			;
+		LITE_REG_R10_P_CHK				<= (!w_hs) ?  bar_reg[R10_P_CHK					][$bits(LITE_REG_R10_P_CHK						) - 1:0]: LITE_REG_R10_P_CHK			;
+		LITE_REG_R10_D_WIDTH			<= (!w_hs) ?  bar_reg[R10_D_WIDTH				][$bits(LITE_REG_R10_D_WIDTH					) - 1:0]: LITE_REG_R10_D_WIDTH			;
+		LITE_REG_R10_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R10_AXI_BRUST_LEN			][$bits(LITE_REG_R10_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R10_AXI_BRUST_LEN	;
+		LITE_REG_R10_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R10_TIMEOUT_THRD			][$bits(LITE_REG_R10_TIMEOUT_THRD				) - 1:0]: LITE_REG_R10_TIMEOUT_THRD		;
 
-		LITE_REG_R11_BAUD_RATE			<= (!w_hs) ?  bar_reg[R11_BAUD_RATE				]: LITE_REG_R11_BAUD_RATE			;
-		LITE_REG_R11_STOP_BIT			<= (!w_hs) ?  bar_reg[R11_STOP_BIT				]: LITE_REG_R11_STOP_BIT			;
-		LITE_REG_R11_P_CHK				<= (!w_hs) ?  bar_reg[R11_P_CHK					]: LITE_REG_R11_P_CHK				;
-		LITE_REG_R11_D_WIDTH			<= (!w_hs) ?  bar_reg[R11_D_WIDTH				]: LITE_REG_R11_D_WIDTH				;
-		LITE_REG_R11_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R11_AXI_BRUST_LEN			]: LITE_REG_R11_AXI_BRUST_LEN		;
-		LITE_REG_R11_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R11_TIMEOUT_THRD			]: LITE_REG_R11_TIMEOUT_THRD		;
+		LITE_REG_R11_BAUD_RATE			<= (!w_hs) ?  bar_reg[R11_BAUD_RATE				][$bits(LITE_REG_R11_BAUD_RATE					) - 1:0]: LITE_REG_R11_BAUD_RATE		;
+		LITE_REG_R11_STOP_BIT			<= (!w_hs) ?  bar_reg[R11_STOP_BIT				][$bits(LITE_REG_R11_STOP_BIT					) - 1:0]: LITE_REG_R11_STOP_BIT			;
+		LITE_REG_R11_P_CHK				<= (!w_hs) ?  bar_reg[R11_P_CHK					][$bits(LITE_REG_R11_P_CHK						) - 1:0]: LITE_REG_R11_P_CHK			;
+		LITE_REG_R11_D_WIDTH			<= (!w_hs) ?  bar_reg[R11_D_WIDTH				][$bits(LITE_REG_R11_D_WIDTH					) - 1:0]: LITE_REG_R11_D_WIDTH			;
+		LITE_REG_R11_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R11_AXI_BRUST_LEN			][$bits(LITE_REG_R11_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R11_AXI_BRUST_LEN	;
+		LITE_REG_R11_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R11_TIMEOUT_THRD			][$bits(LITE_REG_R11_TIMEOUT_THRD				) - 1:0]: LITE_REG_R11_TIMEOUT_THRD		;
 
-		LITE_REG_R12_BAUD_RATE			<= (!w_hs) ?  bar_reg[R12_BAUD_RATE				]: LITE_REG_R12_BAUD_RATE			;
-		LITE_REG_R12_STOP_BIT			<= (!w_hs) ?  bar_reg[R12_STOP_BIT				]: LITE_REG_R12_STOP_BIT			;
-		LITE_REG_R12_P_CHK				<= (!w_hs) ?  bar_reg[R12_P_CHK					]: LITE_REG_R12_P_CHK				;
-		LITE_REG_R12_D_WIDTH			<= (!w_hs) ?  bar_reg[R12_D_WIDTH				]: LITE_REG_R12_D_WIDTH				;
-		LITE_REG_R12_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R12_AXI_BRUST_LEN			]: LITE_REG_R12_AXI_BRUST_LEN		;
-		LITE_REG_R12_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R12_TIMEOUT_THRD			]: LITE_REG_R12_TIMEOUT_THRD		;
+		LITE_REG_R12_BAUD_RATE			<= (!w_hs) ?  bar_reg[R12_BAUD_RATE				][$bits(LITE_REG_R12_BAUD_RATE					) - 1:0]: LITE_REG_R12_BAUD_RATE		;
+		LITE_REG_R12_STOP_BIT			<= (!w_hs) ?  bar_reg[R12_STOP_BIT				][$bits(LITE_REG_R12_STOP_BIT					) - 1:0]: LITE_REG_R12_STOP_BIT			;
+		LITE_REG_R12_P_CHK				<= (!w_hs) ?  bar_reg[R12_P_CHK					][$bits(LITE_REG_R12_P_CHK						) - 1:0]: LITE_REG_R12_P_CHK			;
+		LITE_REG_R12_D_WIDTH			<= (!w_hs) ?  bar_reg[R12_D_WIDTH				][$bits(LITE_REG_R12_D_WIDTH					) - 1:0]: LITE_REG_R12_D_WIDTH			;
+		LITE_REG_R12_AXI_BRUST_LEN		<= (!w_hs) ?  bar_reg[R12_AXI_BRUST_LEN			][$bits(LITE_REG_R12_AXI_BRUST_LEN				) - 1:0]: LITE_REG_R12_AXI_BRUST_LEN	;
+		LITE_REG_R12_TIMEOUT_THRD		<= (!w_hs) ?  bar_reg[R12_TIMEOUT_THRD			][$bits(LITE_REG_R12_TIMEOUT_THRD				) - 1:0]: LITE_REG_R12_TIMEOUT_THRD		;
 
-		LITE_REG_T1_BAUD_RATE			<= (!w_hs) ?  bar_reg[T1_BAUD_RATE				]: LITE_REG_T1_BAUD_RATE			;
-		LITE_REG_T1_STOP_BIT			<= (!w_hs) ?  bar_reg[T1_STOP_BIT				]: LITE_REG_T1_STOP_BIT				;
-		LITE_REG_T1_P_CHK				<= (!w_hs) ?  bar_reg[T1_P_CHK					]: LITE_REG_T1_P_CHK				;
-		LITE_REG_T1_D_WDITH				<= (!w_hs) ?  bar_reg[T1_D_WDITH				]: LITE_REG_T1_D_WDITH				;
-		LITE_REG_T1_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T1_AXI_WR_EFF_LEN			]: LITE_REG_T1_AXI_WR_EFF_LEN		;
+		LITE_REG_T1_BAUD_RATE			<= (!w_hs) ?  bar_reg[T1_BAUD_RATE				][$bits(LITE_REG_T1_BAUD_RATE					) - 1:0]: LITE_REG_T1_BAUD_RATE			;
+		LITE_REG_T1_STOP_BIT			<= (!w_hs) ?  bar_reg[T1_STOP_BIT				][$bits(LITE_REG_T1_STOP_BIT					) - 1:0]: LITE_REG_T1_STOP_BIT			;
+		LITE_REG_T1_P_CHK				<= (!w_hs) ?  bar_reg[T1_P_CHK					][$bits(LITE_REG_T1_P_CHK						) - 1:0]: LITE_REG_T1_P_CHK				;
+		LITE_REG_T1_D_WDITH				<= (!w_hs) ?  bar_reg[T1_D_WDITH				][$bits(LITE_REG_T1_D_WDITH						) - 1:0]: LITE_REG_T1_D_WDITH			;
+		LITE_REG_T1_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T1_AXI_WR_EFF_LEN			][$bits(LITE_REG_T1_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T1_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T2_BAUD_RATE			<= (!w_hs) ?  bar_reg[T2_BAUD_RATE				]: LITE_REG_T2_BAUD_RATE			;
-		LITE_REG_T2_STOP_BIT			<= (!w_hs) ?  bar_reg[T2_STOP_BIT				]: LITE_REG_T2_STOP_BIT				;
-		LITE_REG_T2_P_CHK				<= (!w_hs) ?  bar_reg[T2_P_CHK					]: LITE_REG_T2_P_CHK				;
-		LITE_REG_T2_D_WDITH				<= (!w_hs) ?  bar_reg[T2_D_WDITH				]: LITE_REG_T2_D_WDITH				;
-		LITE_REG_T2_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T2_AXI_WR_EFF_LEN			]: LITE_REG_T2_AXI_WR_EFF_LEN		;
+		LITE_REG_T2_BAUD_RATE			<= (!w_hs) ?  bar_reg[T2_BAUD_RATE				][$bits(LITE_REG_T2_BAUD_RATE					) - 1:0]: LITE_REG_T2_BAUD_RATE			;
+		LITE_REG_T2_STOP_BIT			<= (!w_hs) ?  bar_reg[T2_STOP_BIT				][$bits(LITE_REG_T2_STOP_BIT					) - 1:0]: LITE_REG_T2_STOP_BIT			;
+		LITE_REG_T2_P_CHK				<= (!w_hs) ?  bar_reg[T2_P_CHK					][$bits(LITE_REG_T2_P_CHK						) - 1:0]: LITE_REG_T2_P_CHK				;
+		LITE_REG_T2_D_WDITH				<= (!w_hs) ?  bar_reg[T2_D_WDITH				][$bits(LITE_REG_T2_D_WDITH						) - 1:0]: LITE_REG_T2_D_WDITH			;
+		LITE_REG_T2_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T2_AXI_WR_EFF_LEN			][$bits(LITE_REG_T2_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T2_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T3_BAUD_RATE			<= (!w_hs) ?  bar_reg[T3_BAUD_RATE				]: LITE_REG_T3_BAUD_RATE			;
-		LITE_REG_T3_STOP_BIT			<= (!w_hs) ?  bar_reg[T3_STOP_BIT				]: LITE_REG_T3_STOP_BIT				;
-		LITE_REG_T3_P_CHK				<= (!w_hs) ?  bar_reg[T3_P_CHK					]: LITE_REG_T3_P_CHK				;
-		LITE_REG_T3_D_WDITH				<= (!w_hs) ?  bar_reg[T3_D_WDITH				]: LITE_REG_T3_D_WDITH				;
-		LITE_REG_T3_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T3_AXI_WR_EFF_LEN			]: LITE_REG_T3_AXI_WR_EFF_LEN		;
+		LITE_REG_T3_BAUD_RATE			<= (!w_hs) ?  bar_reg[T3_BAUD_RATE				][$bits(LITE_REG_T3_BAUD_RATE					) - 1:0]: LITE_REG_T3_BAUD_RATE			;
+		LITE_REG_T3_STOP_BIT			<= (!w_hs) ?  bar_reg[T3_STOP_BIT				][$bits(LITE_REG_T3_STOP_BIT					) - 1:0]: LITE_REG_T3_STOP_BIT			;
+		LITE_REG_T3_P_CHK				<= (!w_hs) ?  bar_reg[T3_P_CHK					][$bits(LITE_REG_T3_P_CHK						) - 1:0]: LITE_REG_T3_P_CHK				;
+		LITE_REG_T3_D_WDITH				<= (!w_hs) ?  bar_reg[T3_D_WDITH				][$bits(LITE_REG_T3_D_WDITH						) - 1:0]: LITE_REG_T3_D_WDITH			;
+		LITE_REG_T3_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T3_AXI_WR_EFF_LEN			][$bits(LITE_REG_T3_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T3_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T4_BAUD_RATE			<= (!w_hs) ?  bar_reg[T4_BAUD_RATE				]: LITE_REG_T4_BAUD_RATE			;
-		LITE_REG_T4_STOP_BIT			<= (!w_hs) ?  bar_reg[T4_STOP_BIT				]: LITE_REG_T4_STOP_BIT				;
-		LITE_REG_T4_P_CHK				<= (!w_hs) ?  bar_reg[T4_P_CHK					]: LITE_REG_T4_P_CHK				;
-		LITE_REG_T4_D_WDITH				<= (!w_hs) ?  bar_reg[T4_D_WDITH				]: LITE_REG_T4_D_WDITH				;
-		LITE_REG_T4_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T4_AXI_WR_EFF_LEN			]: LITE_REG_T4_AXI_WR_EFF_LEN		;
+		LITE_REG_T4_BAUD_RATE			<= (!w_hs) ?  bar_reg[T4_BAUD_RATE				][$bits(LITE_REG_T4_BAUD_RATE					) - 1:0]: LITE_REG_T4_BAUD_RATE			;
+		LITE_REG_T4_STOP_BIT			<= (!w_hs) ?  bar_reg[T4_STOP_BIT				][$bits(LITE_REG_T4_STOP_BIT					) - 1:0]: LITE_REG_T4_STOP_BIT			;
+		LITE_REG_T4_P_CHK				<= (!w_hs) ?  bar_reg[T4_P_CHK					][$bits(LITE_REG_T4_P_CHK						) - 1:0]: LITE_REG_T4_P_CHK				;
+		LITE_REG_T4_D_WDITH				<= (!w_hs) ?  bar_reg[T4_D_WDITH				][$bits(LITE_REG_T4_D_WDITH						) - 1:0]: LITE_REG_T4_D_WDITH			;
+		LITE_REG_T4_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T4_AXI_WR_EFF_LEN			][$bits(LITE_REG_T4_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T4_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T5_BAUD_RATE			<= (!w_hs) ?  bar_reg[T5_BAUD_RATE				]: LITE_REG_T5_BAUD_RATE			;
-		LITE_REG_T5_STOP_BIT			<= (!w_hs) ?  bar_reg[T5_STOP_BIT				]: LITE_REG_T5_STOP_BIT				;
-		LITE_REG_T5_P_CHK				<= (!w_hs) ?  bar_reg[T5_P_CHK					]: LITE_REG_T5_P_CHK				;
-		LITE_REG_T5_D_WDITH				<= (!w_hs) ?  bar_reg[T5_D_WDITH				]: LITE_REG_T5_D_WDITH				;
-		LITE_REG_T5_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T5_AXI_WR_EFF_LEN			]: LITE_REG_T5_AXI_WR_EFF_LEN		;
+		LITE_REG_T5_BAUD_RATE			<= (!w_hs) ?  bar_reg[T5_BAUD_RATE				][$bits(LITE_REG_T5_BAUD_RATE					) - 1:0]: LITE_REG_T5_BAUD_RATE			;
+		LITE_REG_T5_STOP_BIT			<= (!w_hs) ?  bar_reg[T5_STOP_BIT				][$bits(LITE_REG_T5_STOP_BIT					) - 1:0]: LITE_REG_T5_STOP_BIT			;
+		LITE_REG_T5_P_CHK				<= (!w_hs) ?  bar_reg[T5_P_CHK					][$bits(LITE_REG_T5_P_CHK						) - 1:0]: LITE_REG_T5_P_CHK				;
+		LITE_REG_T5_D_WDITH				<= (!w_hs) ?  bar_reg[T5_D_WDITH				][$bits(LITE_REG_T5_D_WDITH						) - 1:0]: LITE_REG_T5_D_WDITH			;
+		LITE_REG_T5_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T5_AXI_WR_EFF_LEN			][$bits(LITE_REG_T5_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T5_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T6_BAUD_RATE			<= (!w_hs) ?  bar_reg[T6_BAUD_RATE				]: LITE_REG_T6_BAUD_RATE			;
-		LITE_REG_T6_STOP_BIT			<= (!w_hs) ?  bar_reg[T6_STOP_BIT				]: LITE_REG_T6_STOP_BIT				;
-		LITE_REG_T6_P_CHK				<= (!w_hs) ?  bar_reg[T6_P_CHK					]: LITE_REG_T6_P_CHK				;
-		LITE_REG_T6_D_WDITH				<= (!w_hs) ?  bar_reg[T6_D_WDITH				]: LITE_REG_T6_D_WDITH				;
-		LITE_REG_T6_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T6_AXI_WR_EFF_LEN			]: LITE_REG_T6_AXI_WR_EFF_LEN		;
+		LITE_REG_T6_BAUD_RATE			<= (!w_hs) ?  bar_reg[T6_BAUD_RATE				][$bits(LITE_REG_T6_BAUD_RATE					) - 1:0]: LITE_REG_T6_BAUD_RATE			;
+		LITE_REG_T6_STOP_BIT			<= (!w_hs) ?  bar_reg[T6_STOP_BIT				][$bits(LITE_REG_T6_STOP_BIT					) - 1:0]: LITE_REG_T6_STOP_BIT			;
+		LITE_REG_T6_P_CHK				<= (!w_hs) ?  bar_reg[T6_P_CHK					][$bits(LITE_REG_T6_P_CHK						) - 1:0]: LITE_REG_T6_P_CHK				;
+		LITE_REG_T6_D_WDITH				<= (!w_hs) ?  bar_reg[T6_D_WDITH				][$bits(LITE_REG_T6_D_WDITH						) - 1:0]: LITE_REG_T6_D_WDITH			;
+		LITE_REG_T6_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T6_AXI_WR_EFF_LEN			][$bits(LITE_REG_T6_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T6_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T7_BAUD_RATE			<= (!w_hs) ?  bar_reg[T7_BAUD_RATE				]: LITE_REG_T7_BAUD_RATE			;
-		LITE_REG_T7_STOP_BIT			<= (!w_hs) ?  bar_reg[T7_STOP_BIT				]: LITE_REG_T7_STOP_BIT				;
-		LITE_REG_T7_P_CHK				<= (!w_hs) ?  bar_reg[T7_P_CHK					]: LITE_REG_T7_P_CHK				;
-		LITE_REG_T7_D_WDITH				<= (!w_hs) ?  bar_reg[T7_D_WDITH				]: LITE_REG_T7_D_WDITH				;
-		LITE_REG_T7_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T7_AXI_WR_EFF_LEN			]: LITE_REG_T7_AXI_WR_EFF_LEN		;
+		LITE_REG_T7_BAUD_RATE			<= (!w_hs) ?  bar_reg[T7_BAUD_RATE				][$bits(LITE_REG_T7_BAUD_RATE					) - 1:0]: LITE_REG_T7_BAUD_RATE			;
+		LITE_REG_T7_STOP_BIT			<= (!w_hs) ?  bar_reg[T7_STOP_BIT				][$bits(LITE_REG_T7_STOP_BIT					) - 1:0]: LITE_REG_T7_STOP_BIT			;
+		LITE_REG_T7_P_CHK				<= (!w_hs) ?  bar_reg[T7_P_CHK					][$bits(LITE_REG_T7_P_CHK						) - 1:0]: LITE_REG_T7_P_CHK				;
+		LITE_REG_T7_D_WDITH				<= (!w_hs) ?  bar_reg[T7_D_WDITH				][$bits(LITE_REG_T7_D_WDITH						) - 1:0]: LITE_REG_T7_D_WDITH			;
+		LITE_REG_T7_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T7_AXI_WR_EFF_LEN			][$bits(LITE_REG_T7_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T7_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T8_BAUD_RATE			<= (!w_hs) ?  bar_reg[T8_BAUD_RATE				]: LITE_REG_T8_BAUD_RATE			;
-		LITE_REG_T8_STOP_BIT			<= (!w_hs) ?  bar_reg[T8_STOP_BIT				]: LITE_REG_T8_STOP_BIT				;
-		LITE_REG_T8_P_CHK				<= (!w_hs) ?  bar_reg[T8_P_CHK					]: LITE_REG_T8_P_CHK				;
-		LITE_REG_T8_D_WDITH				<= (!w_hs) ?  bar_reg[T8_D_WDITH				]: LITE_REG_T8_D_WDITH				;
-		LITE_REG_T8_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T8_AXI_WR_EFF_LEN			]: LITE_REG_T8_AXI_WR_EFF_LEN		;
+		LITE_REG_T8_BAUD_RATE			<= (!w_hs) ?  bar_reg[T8_BAUD_RATE				][$bits(LITE_REG_T8_BAUD_RATE					) - 1:0]: LITE_REG_T8_BAUD_RATE			;
+		LITE_REG_T8_STOP_BIT			<= (!w_hs) ?  bar_reg[T8_STOP_BIT				][$bits(LITE_REG_T8_STOP_BIT					) - 1:0]: LITE_REG_T8_STOP_BIT			;
+		LITE_REG_T8_P_CHK				<= (!w_hs) ?  bar_reg[T8_P_CHK					][$bits(LITE_REG_T8_P_CHK						) - 1:0]: LITE_REG_T8_P_CHK				;
+		LITE_REG_T8_D_WDITH				<= (!w_hs) ?  bar_reg[T8_D_WDITH				][$bits(LITE_REG_T8_D_WDITH						) - 1:0]: LITE_REG_T8_D_WDITH			;
+		LITE_REG_T8_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T8_AXI_WR_EFF_LEN			][$bits(LITE_REG_T8_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T8_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T9_BAUD_RATE			<= (!w_hs) ?  bar_reg[T9_BAUD_RATE				]: LITE_REG_T9_BAUD_RATE			;
-		LITE_REG_T9_STOP_BIT			<= (!w_hs) ?  bar_reg[T9_STOP_BIT				]: LITE_REG_T9_STOP_BIT				;
-		LITE_REG_T9_P_CHK				<= (!w_hs) ?  bar_reg[T9_P_CHK					]: LITE_REG_T9_P_CHK				;
-		LITE_REG_T9_D_WDITH				<= (!w_hs) ?  bar_reg[T9_D_WDITH				]: LITE_REG_T9_D_WDITH				;
-		LITE_REG_T9_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T9_AXI_WR_EFF_LEN			]: LITE_REG_T9_AXI_WR_EFF_LEN		;
+		LITE_REG_T9_BAUD_RATE			<= (!w_hs) ?  bar_reg[T9_BAUD_RATE				][$bits(LITE_REG_T9_BAUD_RATE					) - 1:0]: LITE_REG_T9_BAUD_RATE			;
+		LITE_REG_T9_STOP_BIT			<= (!w_hs) ?  bar_reg[T9_STOP_BIT				][$bits(LITE_REG_T9_STOP_BIT					) - 1:0]: LITE_REG_T9_STOP_BIT			;
+		LITE_REG_T9_P_CHK				<= (!w_hs) ?  bar_reg[T9_P_CHK					][$bits(LITE_REG_T9_P_CHK						) - 1:0]: LITE_REG_T9_P_CHK				;
+		LITE_REG_T9_D_WDITH				<= (!w_hs) ?  bar_reg[T9_D_WDITH				][$bits(LITE_REG_T9_D_WDITH						) - 1:0]: LITE_REG_T9_D_WDITH			;
+		LITE_REG_T9_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T9_AXI_WR_EFF_LEN			][$bits(LITE_REG_T9_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T9_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T10_BAUD_RATE			<= (!w_hs) ?  bar_reg[T10_BAUD_RATE				]: LITE_REG_T10_BAUD_RATE			;
-		LITE_REG_T10_STOP_BIT			<= (!w_hs) ?  bar_reg[T10_STOP_BIT				]: LITE_REG_T10_STOP_BIT			;
-		LITE_REG_T10_P_CHK				<= (!w_hs) ?  bar_reg[T10_P_CHK					]: LITE_REG_T10_P_CHK				;
-		LITE_REG_T10_D_WDITH			<= (!w_hs) ?  bar_reg[T10_D_WDITH				]: LITE_REG_T10_D_WDITH				;
-		LITE_REG_T10_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T10_AXI_WR_EFF_LEN		]: LITE_REG_T10_AXI_WR_EFF_LEN		;
+		LITE_REG_T10_BAUD_RATE			<= (!w_hs) ?  bar_reg[T10_BAUD_RATE				][$bits(LITE_REG_T10_BAUD_RATE					) - 1:0]: LITE_REG_T10_BAUD_RATE		;
+		LITE_REG_T10_STOP_BIT			<= (!w_hs) ?  bar_reg[T10_STOP_BIT				][$bits(LITE_REG_T10_STOP_BIT					) - 1:0]: LITE_REG_T10_STOP_BIT			;
+		LITE_REG_T10_P_CHK				<= (!w_hs) ?  bar_reg[T10_P_CHK					][$bits(LITE_REG_T10_P_CHK						) - 1:0]: LITE_REG_T10_P_CHK			;
+		LITE_REG_T10_D_WDITH			<= (!w_hs) ?  bar_reg[T10_D_WDITH				][$bits(LITE_REG_T10_D_WDITH					) - 1:0]: LITE_REG_T10_D_WDITH			;
+		LITE_REG_T10_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T10_AXI_WR_EFF_LEN		][$bits(LITE_REG_T10_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T10_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T11_BAUD_RATE			<= (!w_hs) ?  bar_reg[T11_BAUD_RATE				]: LITE_REG_T11_BAUD_RATE			;
-		LITE_REG_T11_STOP_BIT			<= (!w_hs) ?  bar_reg[T11_STOP_BIT				]: LITE_REG_T11_STOP_BIT			;
-		LITE_REG_T11_P_CHK				<= (!w_hs) ?  bar_reg[T11_P_CHK					]: LITE_REG_T11_P_CHK				;
-		LITE_REG_T11_D_WDITH			<= (!w_hs) ?  bar_reg[T11_D_WDITH				]: LITE_REG_T11_D_WDITH				;
-		LITE_REG_T11_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T11_AXI_WR_EFF_LEN		]: LITE_REG_T11_AXI_WR_EFF_LEN		;
+		LITE_REG_T11_BAUD_RATE			<= (!w_hs) ?  bar_reg[T11_BAUD_RATE				][$bits(LITE_REG_T11_BAUD_RATE					) - 1:0]: LITE_REG_T11_BAUD_RATE		;
+		LITE_REG_T11_STOP_BIT			<= (!w_hs) ?  bar_reg[T11_STOP_BIT				][$bits(LITE_REG_T11_STOP_BIT					) - 1:0]: LITE_REG_T11_STOP_BIT			;
+		LITE_REG_T11_P_CHK				<= (!w_hs) ?  bar_reg[T11_P_CHK					][$bits(LITE_REG_T11_P_CHK						) - 1:0]: LITE_REG_T11_P_CHK			;
+		LITE_REG_T11_D_WDITH			<= (!w_hs) ?  bar_reg[T11_D_WDITH				][$bits(LITE_REG_T11_D_WDITH					) - 1:0]: LITE_REG_T11_D_WDITH			;
+		LITE_REG_T11_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T11_AXI_WR_EFF_LEN		][$bits(LITE_REG_T11_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T11_AXI_WR_EFF_LEN	;
 
-		LITE_REG_T12_BAUD_RATE			<= (!w_hs) ?  bar_reg[T12_BAUD_RATE				]: LITE_REG_T12_BAUD_RATE			;
-		LITE_REG_T12_STOP_BIT			<= (!w_hs) ?  bar_reg[T12_STOP_BIT				]: LITE_REG_T12_STOP_BIT			;
-		LITE_REG_T12_P_CHK				<= (!w_hs) ?  bar_reg[T12_P_CHK					]: LITE_REG_T12_P_CHK				;
-		LITE_REG_T12_D_WDITH			<= (!w_hs) ?  bar_reg[T12_D_WDITH				]: LITE_REG_T12_D_WDITH				;
-		LITE_REG_T12_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T12_AXI_WR_EFF_LEN		]: LITE_REG_T12_AXI_WR_EFF_LEN		;
+		LITE_REG_T12_BAUD_RATE			<= (!w_hs) ?  bar_reg[T12_BAUD_RATE				][$bits(LITE_REG_T12_BAUD_RATE					) - 1:0]: LITE_REG_T12_BAUD_RATE		;
+		LITE_REG_T12_STOP_BIT			<= (!w_hs) ?  bar_reg[T12_STOP_BIT				][$bits(LITE_REG_T12_STOP_BIT					) - 1:0]: LITE_REG_T12_STOP_BIT			;
+		LITE_REG_T12_P_CHK				<= (!w_hs) ?  bar_reg[T12_P_CHK					][$bits(LITE_REG_T12_P_CHK						) - 1:0]: LITE_REG_T12_P_CHK			;
+		LITE_REG_T12_D_WDITH			<= (!w_hs) ?  bar_reg[T12_D_WDITH				][$bits(LITE_REG_T12_D_WDITH					) - 1:0]: LITE_REG_T12_D_WDITH			;
+		LITE_REG_T12_AXI_WR_EFF_LEN		<= (!w_hs) ?  bar_reg[T12_AXI_WR_EFF_LEN		][$bits(LITE_REG_T12_AXI_WR_EFF_LEN				) - 1:0]: LITE_REG_T12_AXI_WR_EFF_LEN	;
 	end
 end
 

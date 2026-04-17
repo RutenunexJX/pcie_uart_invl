@@ -8,46 +8,46 @@ Auto-config - Wrote:
     -f F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\.dvt\default.build.auto.1
 *** List of invocations ***
 Invocation #1 +dvt_init+dvt in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\.dvt\default.build.auto.1 at line 9
-*** Done analyzing build configuration [48 ms] ***
+*** Done analyzing build configuration [31 ms] ***
 
 *** Start SystemVerilog build ***
 *** Invocation #1***
 Loading (1) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [2 ms, 655 lines, Verilog_2001] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [7 ms, 655 lines, Verilog_2001] ...
 Loading (2) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [4 ms, 1196 lines, Verilog_2001] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [10 ms, 1198 lines, Verilog_2001] ...
 Loading (3) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [4 ms, 1204 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [11 ms, 1204 lines, SystemVerilog_2012] ...
 Loading (4) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_common_package.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_common_package.sv [14 ms, 80 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_common_package.sv [1 ms, 80 lines, SystemVerilog_2012] ...
 Loading (5) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_pcie_uart_package.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_pcie_uart_package.sv [2 ms, 279 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_pcie_uart_package.sv [1 ms, 184 lines, SystemVerilog_2012] ...
 Loading (6) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv ...
 Loading (7) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_svh.svh ...
 Loading (8) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [29 ms, 336 lines, SystemVerilog_2012] ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_svh.svh [1 ms, 4 lines, SystemVerilog_2012] ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [11 ms, 594 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [3 ms, 336 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_svh.svh [0 ms, 4 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [5 ms, 529 lines, SystemVerilog_2012] ...
 Loading (9) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v ...
 Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [0 ms, 76 lines, Verilog_2001] ...
 Loading (10) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [7 ms, 1315 lines, SystemVerilog_2012] ...
-*** Done invocation #1 [85 ms] ***
-*** Done parsing [LT 52 ms, PT 85.0 ms] ***
-*** Total number of lines [5 739] ***
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [6 ms, 1315 lines, SystemVerilog_2012] ...
+*** Done invocation #1 [59 ms] ***
+*** Done parsing [LT 32 ms, PT 59.0 ms] ***
+*** Total number of lines [5 581] ***
 Performing post full build actions ...
 Performing post full build step 1 (SRI) [0 ms] ...
-Performing post full build step 2 (RI) [0 ms] ...
+Performing post full build step 2 (RI) [1 ms] ...
 Performing post full build step 3 (RCP) [0 ms] ...
 *** Files summary [10 total, 10 unique, 0 optimized] ***
-*** Done SystemVerilog build [115 ms] ***
+*** Done SystemVerilog build [65 ms] ***
 
 *** Start mixed mode extension build ***
 Performing mixed post full build step (VLOG - RI) [0 ms] ...
 *** Warning: UNSPECIFIED_TOP: Please specify a -top module/entity/configuration in the project build file
 *** Top design candidates: work.pcie_uart, work.TB_1
-Performing mixed post full build step (MIXED - ELAB) [385 ms] ...
-Performing mixed post full build step (MIXED - UNEL) [52 ms] ...
+Performing mixed post full build step (MIXED - ELAB) [320 ms] ...
+Performing mixed post full build step (MIXED - UNEL) [51 ms] ...
 *** Warning: UNDECLARED_MODULE: Module 'IBUFDS_GTE2' is not declared
     at line 46 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [compile index 9]
 *** Warning: UNDECLARED_MODULE: Module 'design_1_wrapper' is not declared
@@ -124,30 +124,82 @@ Performing mixed post full build step (MIXED - UNEL) [52 ms] ...
     at line 599 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [compile index 1]
 *** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'rx_cnt' of '4-bit' type and item expression '8' of '32-bit' type
     at line 600 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [compile index 1]
-*** Error: UNDECLARED_IDENTIFIER: Identifier 'chl_clr_done' is not declared
-    at line 323 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Error: UNDECLARED_IDENTIFIER: Identifier 'chl_clr_done' is not declared
-    at line 399 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
+*** Error: NON_EXISTING_PORT: Non existing port 'tx_driv_flag' of module 'axi_uart_tx'
+    at line 938 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LR_CFG_REQ' of module 'axi_uart_tx'
+    at line 939 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LR_STOP_BIT' of module 'axi_uart_tx'
+    at line 940 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LR_P_CHK' of module 'axi_uart_tx'
+    at line 941 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LR_D_WDITH' of module 'axi_uart_tx'
+    at line 942 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LR_AXI_WR_MAX_LEN' of module 'axi_uart_tx'
+    at line 943 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LR_AXI_WR_EFF_LEN' of module 'axi_uart_tx'
+    at line 944 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LR_CFG_DONE' of module 'axi_uart_tx'
+    at line 946 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LR_TFF_USEDW' of module 'axi_uart_tx'
+    at line 947 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awid' of module 'axi_uart_tx'
+    at line 950 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awaddr' of module 'axi_uart_tx'
+    at line 951 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awlen' of module 'axi_uart_tx'
+    at line 952 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awsize' of module 'axi_uart_tx'
+    at line 953 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awburst' of module 'axi_uart_tx'
+    at line 954 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awprot' of module 'axi_uart_tx'
+    at line 955 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awvalid' of module 'axi_uart_tx'
+    at line 956 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awlock' of module 'axi_uart_tx'
+    at line 957 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awcache' of module 'axi_uart_tx'
+    at line 958 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_awready' of module 'axi_uart_tx'
+    at line 959 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_wdata' of module 'axi_uart_tx'
+    at line 961 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_wstrb' of module 'axi_uart_tx'
+    at line 962 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_wlast' of module 'axi_uart_tx'
+    at line 963 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_wvalid' of module 'axi_uart_tx'
+    at line 964 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_wready' of module 'axi_uart_tx'
+    at line 965 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_bid' of module 'axi_uart_tx'
+    at line 967 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_bresp' of module 'axi_uart_tx'
+    at line 968 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_bvalid' of module 'axi_uart_tx'
+    at line 969 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 's_axi_bready' of module 'axi_uart_tx'
+    at line 970 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'UART_TX' of module 'axi_uart_tx'
+    at line 972 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: UNDECLARED_IDENTIFIER: Identifier 'P_ENABLE' is not declared
+    at line 933 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: MISSING_PORT_CONNECTION: Instance 'UART_W' of module 'axi_uart_tx' is missing port connection to input 'tx_para, tx_ctrl'
+    at line 932 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: MISSING_PORT_CONNECTION: Instance 'UART_W' of module 'axi_uart_tx' is missing port connection to interface 'sw_axi_full_if'
+    at line 932 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: MISSING_PORT_CONNECTION: Instance 'UART_W' of module 'axi_uart_tx' is missing port connection to output 'uart_tx, tx_status'
+    at line 932 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: UNDECLARED_IDENTIFIER: Identifier 'frame_interval_unit_s' is not a member of 'new_tx_para'
+    at line 146 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
+*** Error: UNDECLARED_IDENTIFIER: Identifier 'frame_interval_unit_ms' is not a member of 'new_tx_para'
+    at line 147 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
+*** Error: UNDECLARED_IDENTIFIER: Identifier 'frame_interval_unit_us' is not a member of 'new_tx_para'
+    at line 148 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
+*** Error: UNDECLARED_IDENTIFIER: Identifier 'frame_interval_unit_baud_rate' is not a member of 'new_tx_para'
+    at line 149 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
 *** Warning: UNDECLARED_MODULE: Module 'uart_ff_8k' is not declared
-    at line 271 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'tx_cnt' of '4-bit' type and item expression '0' of '32-bit' type
-    at line 489 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'tx_cnt' of '4-bit' type and item expression '1' of '32-bit' type
-    at line 490 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'tx_cnt' of '4-bit' type and item expression '2' of '32-bit' type
-    at line 491 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'tx_cnt' of '4-bit' type and item expression '3' of '32-bit' type
-    at line 492 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'tx_cnt' of '4-bit' type and item expression '4' of '32-bit' type
-    at line 493 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'tx_cnt' of '4-bit' type and item expression '5' of '32-bit' type
-    at line 494 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'tx_cnt' of '4-bit' type and item expression '6' of '32-bit' type
-    at line 495 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'tx_cnt' of '4-bit' type and item expression '7' of '32-bit' type
-    at line 496 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'tx_cnt' of '4-bit' type and item expression '8' of '32-bit' type
-    at line 497 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
+    at line 302 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_arid[i]' in combinational logic (use blocking assignment)
     at line 265 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_araddr[i]' in combinational logic (use blocking assignment)
@@ -206,202 +258,6 @@ Performing mixed post full build step (MIXED - UNEL) [52 ms] ...
     at line 956 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
 *** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'SW' of '4-bit' type and item expression '3' of '32-bit' type
     at line 962 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_AXI_RD_LEN' of '16-bit' type from 'bar_reg[AXI_RD_LEN]' of '32-bit' type
-    at line 1033 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_AXI_WR_MAX_LEN' of '16-bit' type from 'bar_reg[AXI_WR_MAX_LEN]' of '32-bit' type
-    at line 1034 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R1_STOP_BIT' of '4-bit' type from 'bar_reg[R1_STOP_BIT]' of '32-bit' type
-    at line 1037 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R1_P_CHK' of '4-bit' type from 'bar_reg[R1_P_CHK]' of '32-bit' type
-    at line 1038 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R1_D_WIDTH' of '4-bit' type from 'bar_reg[R1_D_WIDTH]' of '32-bit' type
-    at line 1039 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R1_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R1_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1040 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R2_STOP_BIT' of '4-bit' type from 'bar_reg[R2_STOP_BIT]' of '32-bit' type
-    at line 1044 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R2_P_CHK' of '4-bit' type from 'bar_reg[R2_P_CHK]' of '32-bit' type
-    at line 1045 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R2_D_WIDTH' of '4-bit' type from 'bar_reg[R2_D_WIDTH]' of '32-bit' type
-    at line 1046 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R2_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R2_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1047 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R3_STOP_BIT' of '4-bit' type from 'bar_reg[R3_STOP_BIT]' of '32-bit' type
-    at line 1051 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R3_P_CHK' of '4-bit' type from 'bar_reg[R3_P_CHK]' of '32-bit' type
-    at line 1052 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R3_D_WIDTH' of '4-bit' type from 'bar_reg[R3_D_WIDTH]' of '32-bit' type
-    at line 1053 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R3_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R3_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1054 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R4_STOP_BIT' of '4-bit' type from 'bar_reg[R4_STOP_BIT]' of '32-bit' type
-    at line 1058 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R4_P_CHK' of '4-bit' type from 'bar_reg[R4_P_CHK]' of '32-bit' type
-    at line 1059 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R4_D_WIDTH' of '4-bit' type from 'bar_reg[R4_D_WIDTH]' of '32-bit' type
-    at line 1060 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R4_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R4_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1061 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R5_STOP_BIT' of '4-bit' type from 'bar_reg[R5_STOP_BIT]' of '32-bit' type
-    at line 1065 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R5_P_CHK' of '4-bit' type from 'bar_reg[R5_P_CHK]' of '32-bit' type
-    at line 1066 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R5_D_WIDTH' of '4-bit' type from 'bar_reg[R5_D_WIDTH]' of '32-bit' type
-    at line 1067 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R5_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R5_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1068 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R6_STOP_BIT' of '4-bit' type from 'bar_reg[R6_STOP_BIT]' of '32-bit' type
-    at line 1072 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R6_P_CHK' of '4-bit' type from 'bar_reg[R6_P_CHK]' of '32-bit' type
-    at line 1073 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R6_D_WIDTH' of '4-bit' type from 'bar_reg[R6_D_WIDTH]' of '32-bit' type
-    at line 1074 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R6_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R6_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1075 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R7_STOP_BIT' of '4-bit' type from 'bar_reg[R7_STOP_BIT]' of '32-bit' type
-    at line 1079 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R7_P_CHK' of '4-bit' type from 'bar_reg[R7_P_CHK]' of '32-bit' type
-    at line 1080 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R7_D_WIDTH' of '4-bit' type from 'bar_reg[R7_D_WIDTH]' of '32-bit' type
-    at line 1081 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R7_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R7_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1082 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R8_STOP_BIT' of '4-bit' type from 'bar_reg[R8_STOP_BIT]' of '32-bit' type
-    at line 1086 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R8_P_CHK' of '4-bit' type from 'bar_reg[R8_P_CHK]' of '32-bit' type
-    at line 1087 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R8_D_WIDTH' of '4-bit' type from 'bar_reg[R8_D_WIDTH]' of '32-bit' type
-    at line 1088 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R8_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R8_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1089 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R9_STOP_BIT' of '4-bit' type from 'bar_reg[R9_STOP_BIT]' of '32-bit' type
-    at line 1093 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R9_P_CHK' of '4-bit' type from 'bar_reg[R9_P_CHK]' of '32-bit' type
-    at line 1094 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R9_D_WIDTH' of '4-bit' type from 'bar_reg[R9_D_WIDTH]' of '32-bit' type
-    at line 1095 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R9_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R9_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1096 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R10_STOP_BIT' of '4-bit' type from 'bar_reg[R10_STOP_BIT]' of '32-bit' type
-    at line 1100 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R10_P_CHK' of '4-bit' type from 'bar_reg[R10_P_CHK]' of '32-bit' type
-    at line 1101 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R10_D_WIDTH' of '4-bit' type from 'bar_reg[R10_D_WIDTH]' of '32-bit' type
-    at line 1102 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R10_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R10_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1103 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R11_STOP_BIT' of '4-bit' type from 'bar_reg[R11_STOP_BIT]' of '32-bit' type
-    at line 1107 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R11_P_CHK' of '4-bit' type from 'bar_reg[R11_P_CHK]' of '32-bit' type
-    at line 1108 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R11_D_WIDTH' of '4-bit' type from 'bar_reg[R11_D_WIDTH]' of '32-bit' type
-    at line 1109 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R11_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R11_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1110 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R12_STOP_BIT' of '4-bit' type from 'bar_reg[R12_STOP_BIT]' of '32-bit' type
-    at line 1114 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R12_P_CHK' of '4-bit' type from 'bar_reg[R12_P_CHK]' of '32-bit' type
-    at line 1115 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R12_D_WIDTH' of '4-bit' type from 'bar_reg[R12_D_WIDTH]' of '32-bit' type
-    at line 1116 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_R12_AXI_BRUST_LEN' of '8-bit' type from 'bar_reg[R12_AXI_BRUST_LEN]' of '32-bit' type
-    at line 1117 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T1_STOP_BIT' of '4-bit' type from 'bar_reg[T1_STOP_BIT]' of '32-bit' type
-    at line 1121 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T1_P_CHK' of '4-bit' type from 'bar_reg[T1_P_CHK]' of '32-bit' type
-    at line 1122 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T1_D_WDITH' of '4-bit' type from 'bar_reg[T1_D_WDITH]' of '32-bit' type
-    at line 1123 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T1_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T1_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1124 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T2_STOP_BIT' of '4-bit' type from 'bar_reg[T2_STOP_BIT]' of '32-bit' type
-    at line 1127 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T2_P_CHK' of '4-bit' type from 'bar_reg[T2_P_CHK]' of '32-bit' type
-    at line 1128 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T2_D_WDITH' of '4-bit' type from 'bar_reg[T2_D_WDITH]' of '32-bit' type
-    at line 1129 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T2_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T2_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1130 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T3_STOP_BIT' of '4-bit' type from 'bar_reg[T3_STOP_BIT]' of '32-bit' type
-    at line 1133 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T3_P_CHK' of '4-bit' type from 'bar_reg[T3_P_CHK]' of '32-bit' type
-    at line 1134 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T3_D_WDITH' of '4-bit' type from 'bar_reg[T3_D_WDITH]' of '32-bit' type
-    at line 1135 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T3_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T3_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1136 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T4_STOP_BIT' of '4-bit' type from 'bar_reg[T4_STOP_BIT]' of '32-bit' type
-    at line 1139 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T4_P_CHK' of '4-bit' type from 'bar_reg[T4_P_CHK]' of '32-bit' type
-    at line 1140 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T4_D_WDITH' of '4-bit' type from 'bar_reg[T4_D_WDITH]' of '32-bit' type
-    at line 1141 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T4_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T4_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1142 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T5_STOP_BIT' of '4-bit' type from 'bar_reg[T5_STOP_BIT]' of '32-bit' type
-    at line 1145 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T5_P_CHK' of '4-bit' type from 'bar_reg[T5_P_CHK]' of '32-bit' type
-    at line 1146 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T5_D_WDITH' of '4-bit' type from 'bar_reg[T5_D_WDITH]' of '32-bit' type
-    at line 1147 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T5_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T5_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1148 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T6_STOP_BIT' of '4-bit' type from 'bar_reg[T6_STOP_BIT]' of '32-bit' type
-    at line 1151 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T6_P_CHK' of '4-bit' type from 'bar_reg[T6_P_CHK]' of '32-bit' type
-    at line 1152 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T6_D_WDITH' of '4-bit' type from 'bar_reg[T6_D_WDITH]' of '32-bit' type
-    at line 1153 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T6_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T6_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1154 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T7_STOP_BIT' of '4-bit' type from 'bar_reg[T7_STOP_BIT]' of '32-bit' type
-    at line 1157 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T7_P_CHK' of '4-bit' type from 'bar_reg[T7_P_CHK]' of '32-bit' type
-    at line 1158 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T7_D_WDITH' of '4-bit' type from 'bar_reg[T7_D_WDITH]' of '32-bit' type
-    at line 1159 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T7_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T7_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1160 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T8_STOP_BIT' of '4-bit' type from 'bar_reg[T8_STOP_BIT]' of '32-bit' type
-    at line 1163 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T8_P_CHK' of '4-bit' type from 'bar_reg[T8_P_CHK]' of '32-bit' type
-    at line 1164 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T8_D_WDITH' of '4-bit' type from 'bar_reg[T8_D_WDITH]' of '32-bit' type
-    at line 1165 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T8_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T8_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1166 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T9_STOP_BIT' of '4-bit' type from 'bar_reg[T9_STOP_BIT]' of '32-bit' type
-    at line 1169 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T9_P_CHK' of '4-bit' type from 'bar_reg[T9_P_CHK]' of '32-bit' type
-    at line 1170 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T9_D_WDITH' of '4-bit' type from 'bar_reg[T9_D_WDITH]' of '32-bit' type
-    at line 1171 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T9_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T9_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1172 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T10_STOP_BIT' of '4-bit' type from 'bar_reg[T10_STOP_BIT]' of '32-bit' type
-    at line 1175 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T10_P_CHK' of '4-bit' type from 'bar_reg[T10_P_CHK]' of '32-bit' type
-    at line 1176 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T10_D_WDITH' of '4-bit' type from 'bar_reg[T10_D_WDITH]' of '32-bit' type
-    at line 1177 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T10_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T10_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1178 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T11_STOP_BIT' of '4-bit' type from 'bar_reg[T11_STOP_BIT]' of '32-bit' type
-    at line 1181 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T11_P_CHK' of '4-bit' type from 'bar_reg[T11_P_CHK]' of '32-bit' type
-    at line 1182 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T11_D_WDITH' of '4-bit' type from 'bar_reg[T11_D_WDITH]' of '32-bit' type
-    at line 1183 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T11_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T11_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1184 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T12_STOP_BIT' of '4-bit' type from 'bar_reg[T12_STOP_BIT]' of '32-bit' type
-    at line 1187 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T12_P_CHK' of '4-bit' type from 'bar_reg[T12_P_CHK]' of '32-bit' type
-    at line 1188 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T12_D_WDITH' of '4-bit' type from 'bar_reg[T12_D_WDITH]' of '32-bit' type
-    at line 1189 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: WIDTH_MISMATCH_TRUNCATION: Assignment to 'LITE_REG_T12_AXI_WR_EFF_LEN' of '16-bit' type from 'bar_reg[T12_AXI_WR_EFF_LEN]' of '32-bit' type
-    at line 1190 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
 *** Warning: UNELABORATED_INTERFACE: Interface 'work.axi_lite_if' is not elaborated
     at line 6 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [compile index 8]
 *** Warning: UNELABORATED_INTERFACE: Interface 'work.axi_full_if' is not elaborated
@@ -415,7 +271,7 @@ Performing mixed post full build step (MIXED - UNEL) [52 ms] ...
 *** Warning: UNELABORATED_INTERFACE: Interface 'work.uart_tx_debug_if' is not elaborated
     at line 306 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [compile index 8]
 Performing mixed post full build step (VLOG - RD) [1 ms] ...
-Performing mixed post full build step (VLOG - US) [53 ms] ...
+Performing mixed post full build step (VLOG - US) [51 ms] ...
 *** Warning: SIGNAL_NEVER_USED: Signal 'got_whole_brust_pkt' is never used
     at line 30 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [compile index 1]
 *** Warning: SIGNAL_NEVER_USED: Signal 'LR_FSM_RST_REQ' is never used
@@ -466,6 +322,46 @@ Performing mixed post full build step (VLOG - US) [53 ms] ...
     at line 29 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_USED: Signal 'interupt_ack' is never used
     at line 30 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'UART_TX' is never written
+    at line 539 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awid' is never read
+    at line 543 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awaddr' is never read
+    at line 544 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awlen' is never read
+    at line 545 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awsize' is never read
+    at line 546 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awburst' is never read
+    at line 547 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awprot' is never read
+    at line 548 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awvalid' is never read
+    at line 549 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awlock' is never read
+    at line 550 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awcache' is never read
+    at line 551 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'FULL_awready' is never written
+    at line 552 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_wdata' is never read
+    at line 554 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_wstrb' is never read
+    at line 555 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_wlast' is never read
+    at line 556 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_wvalid' is never read
+    at line 557 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'FULL_wready' is never written
+    at line 558 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'FULL_bid' is never written
+    at line 560 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'FULL_bresp' is never written
+    at line 561 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'FULL_bvalid' is never written
+    at line 562 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'FULL_bready' is never read
+    at line 563 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'is_start_bit' is never read (connected to sub-instance output port)
     at line 583 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'got_whole_brust_pkt' is never read (connected to sub-instance output port)
@@ -510,14 +406,20 @@ Performing mixed post full build step (VLOG - US) [53 ms] ...
     at line 617 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'LITE_REG_TX_CFG_REQ' is never written
     at line 623 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'LITE_REG_TX_CFG_DONE' is never written
+    at line 624 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'LITE_REG_TX_INVL_MODE' is never written
     at line 629 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'LITE_REG_TX_INVL_HF_BAUD' is never written
     at line 630 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'LITE_REG_TX_INVL_CLK_PD' is never written
     at line 631 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'LITE_REG_TX_TFF_USEDW' is never written
+    at line 632 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_USED: Signal 'LITE_REG_TX_AXI_WR_MAX_LEN' is never used
     at line 633 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'sys_axi_wr_max_len' is never read
+    at line 637 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'rx_cfg_done' is never read
     at line 640 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'rx_baud_rate' is never read
@@ -528,16 +430,26 @@ Performing mixed post full build step (VLOG - US) [53 ms] ...
     at line 647 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'rx_fsm_rst_done' is never read
     at line 649 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'tx_cfg_req' is never read
+    at line 654 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'tx_cfg_done' is never read
     at line 655 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'tx_baud_rate' is never read
     at line 656 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'tx_stop_bit' is never read
+    at line 657 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'tx_p_chk' is never read
+    at line 658 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'tx_d_wdith' is never read
+    at line 659 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'tx_invl_mode' is never read
     at line 660 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'tx_invl_hf_baud' is never read
     at line 661 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'tx_invl_clk_pd' is never read
     at line 662 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_READ: Signal 'tx_axi_wr_eff_len' is never read
+    at line 664 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'rx_chl_clr_req' is never written (connected to sub-instance input port)
     at line 666 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'rx_chl_clr_done' is never read (connected to sub-instance output port)
@@ -548,7 +460,7 @@ Performing mixed post full build step (VLOG - US) [53 ms] ...
     at line 670 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'rx_driv_flag' is never written (connected to sub-instance input port)
     at line 672 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
-*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'tx_driv_flag' is never written (connected to sub-instance input port)
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'tx_driv_flag' is never written
     at line 673 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'r1_LITE_REG_RSYNC_REQ' is never read
     at line 675 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
@@ -568,38 +480,6 @@ Performing mixed post full build step (VLOG - US) [53 ms] ...
     at line 486 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
 *** Warning: SIGNAL_NEVER_READ: Signal 'arprot' is never read
     at line 502 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
-*** Warning: SIGNAL_NEVER_USED: Signal 'LR_CFG_REQ' is never used
-    at line 30 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: PARAMETER_NEVER_USED: Parameter 'CHL_CLR' is never used
-    at line 81 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'para_cfg_req_post' is never written
-    at line 101 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_USED: Signal 'is_byte_zero' is never used
-    at line 104 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_USED: Signal 'r1_w_hs' is never used
-    at line 115 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'awid' is never read
-    at line 133 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'awaddr' is never read
-    at line 134 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'awlen' is never read
-    at line 135 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'awsize' is never read
-    at line 136 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'awburst' is never read
-    at line 137 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'awprot' is never read
-    at line 138 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'awlock' is never read
-    at line 140 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'awcache' is never read
-    at line 141 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'fix_w_hs' is never read
-    at line 156 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'r1_wdata' is never read
-    at line 157 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: SIGNAL_NEVER_READ: Signal 'b_hs' is never read
-    at line 165 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
 *** Warning: SIGNAL_NEVER_READ: Signal 'LOG_SW' is never read
     at line 68 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
 *** Warning: SIGNAL_NEVER_READ: Signal 'INIT' is never read
@@ -712,7 +592,7 @@ Performing mixed post full build step (VLOG - US) [53 ms] ...
     at line 224 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
 *** Warning: SIGNAL_NEVER_READ: Signal 'READ_DONE' is never read
     at line 228 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
-*** Done mixed mode extension build [519 ms] ***
+*** Done mixed mode extension build [440 ms] ***
 *** Start adding/validating the DVT Auto-Linked resources ***
-*** Done adding/validating the DVT Auto-Linked resources [25 ms] ***
-*** Total build time [719 ms] ***
+*** Done adding/validating the DVT Auto-Linked resources [2 ms] ***
+*** Total build time [565 ms] ***
