@@ -56,24 +56,14 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_common_package.sv</name>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/test_axi.v</name>
 			<type>1</type>
-			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_common_package.sv</location>
+			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/test_axi.v</location>
 		</link>
 		<link>
-			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_interface.sv</name>
+			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/test_axil.v</name>
 			<type>1</type>
-			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_interface.sv</location>
-		</link>
-		<link>
-			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_pcie_uart_package.sv</name>
-			<type>1</type>
-			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_pcie_uart_package.sv</location>
-		</link>
-		<link>
-			<name>DVT Auto-Linked/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_svh.svh</name>
-			<type>1</type>
-			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/_svh.svh</location>
+			<location>F:/_xu/_prj/pcie_uart_tx_array/pcie_uart_invl/pcie_uart.srcs/sources_1/new/test_axil.v</location>
 		</link>
 	</linkedResources>
 </projectDescription>

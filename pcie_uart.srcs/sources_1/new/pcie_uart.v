@@ -52,7 +52,7 @@ IBUFDS_GTE2 IBUFDS_GTE2_u1
     .IB                             (PCIE_CLK_N             )
 );
 
-
+/*
 design_1_wrapper
     BD(
     .PCIE_CLK           (   pcie_clk            ),
@@ -70,6 +70,14 @@ design_1_wrapper
     .LOGIC_SUB_VERSION  (   `LOGIC_SUB_VERSION  ) 
 
 );
+*/
+design_2_wrapper BD(
+	.PCIE_CLK		(	pcie_clk		),
+	.PCIE_RSTN		(	PCIE_RST_N		),
+	.pcie_mgt_rxn	(	PCIE_MGT_RX_N	),
+	.pcie_mgt_rxp	(	PCIE_MGT_RX_P	),
+	.pcie_mgt_txn	(	PCIE_MGT_TX_N	),
+	.pcie_mgt_txp	(	PCIE_MGT_TX_P	));
 
 
 endmodule

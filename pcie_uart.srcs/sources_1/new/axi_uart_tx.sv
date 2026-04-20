@@ -43,6 +43,8 @@ logic			aw_hs						;
 logic			w_hs						;
 logic			b_hs						;
 logic			act_wlast					;
+logic			r1_w_hs						;
+
 //
 logic			uart_tx_pre					;
 logic	[7:0]	parity_check_data			;
@@ -57,6 +59,7 @@ logic	[3:0]	fifo_rd_strb_trailing_zeros	;
 logic	[15:0]	axi_wr_cnt					;
 //
 logic	[3:0]	wstrb_cnt					;
+logic	[3:0]	r1_wstrb_cnt				;
 logic			tx_driv_flag				;
 logic	[31:0]	phase_sum					;
 logic	[31:0]	r1_phase_sum				;
@@ -75,7 +78,14 @@ logic	[3:0]	fifo_rd_byte_num			;
 logic	[15:0]	act_axi_wr_eff_len			;
 logic	[15:0]	act_axi_wr_max_len			;
 
-logic	[63:0]	slid_wind					;
+logic	[63:0]	right_aligned_wdata			;
+logic	[127:0]	slid_wind					;
+logic	[4:0]	slid_wind_byte_num			;
+logic	[3:0]	frame_header_byte_cnt		;
+logic	[3:0]	payload_len_byte_cnt		;
+logic	[3:0]	interval_byte_cnt			;
+logic	[63:0]	comb_data					;
+logic	[4:0]	_8_minus_slid_wind_byte_num	;
 
 // ================================================================================
 //                               struct and enum definition
@@ -97,10 +107,14 @@ typedef enum logic [3:0]{
 typedef struct{
 	logic	no_tx_interval;
 	logic	ready_to_cfg;
+
+	logic	got_frame_header;
 	logic	got_payload_len;
 	logic	got_interval_val;
 	logic	got_interval_unit;
 	logic	got_whole_payload;
+
+	logic	slid_wind_overflow;
 }flag_t;
 
 typedef struct{
@@ -108,7 +122,7 @@ typedef struct{
 	logic	[15:0]	payload_len;
 	logic	[15:0]	interval_val;
 	interval_unit_e	interval_unit;
-}priv_frame_t;
+}priv_frame_hdr_t;
 
 typedef	struct{
 	logic	[71:0]	din			;
@@ -128,6 +142,8 @@ tx_fifo_t			tx_fifo;
 axi_uart_tx_para_t	new_tx_para;
 axi_uart_tx_para_t	cur_tx_para;
 flag_t				flag = '{default:'0};
+priv_frame_hdr_t	new_frame_hdr = '{default:'0};
+priv_frame_hdr_t	cur_frame_hdr = '{default:'0};
 
 // ================================================================================
 //                               combinational assignment
@@ -161,6 +177,24 @@ always_ff @(posedge clk, posedge rst) begin
 		flag.no_tx_interval <= 'd1;
 	else
 		flag.no_tx_interval <= flag.no_tx_interval;
+end
+
+// ================================================================================
+//                               delay
+// ================================================================================
+always_ff @(posedge clk, posedge rst) begin
+	if(rst) begin
+		r1_phase_sum	<= 'd0;
+		r1_tx_driv_flag	<= 'd0;
+		r1_wstrb_cnt	<= 'd0;
+		r1_w_hs			<= 'd0;
+	end
+	else begin
+		r1_phase_sum	<= phase_sum;
+		r1_tx_driv_flag	<= tx_driv_flag;
+		r1_wstrb_cnt	<= wstrb_cnt;
+		r1_w_hs			<= w_hs;
+	end
 end
 
 // ================================================================================
@@ -266,17 +300,6 @@ always_ff @(posedge clk, posedge rst) begin
 		phase_sum <= 'd0;
 	else
 		phase_sum <= phase_sum + cur_tx_para.baud_rate_phase_acc_step_len + frac_carry_bit;
-end
-
-always_ff @(posedge clk, posedge rst) begin
-	if(rst) begin
-		r1_phase_sum	<= 'd0;
-		r1_tx_driv_flag	<= 'd0;
-	end
-	else begin
-		r1_phase_sum	<= phase_sum;
-		r1_tx_driv_flag	<= tx_driv_flag;
-	end
 end
 
 always_ff @(posedge clk, posedge rst) begin
@@ -387,7 +410,10 @@ always_comb begin
 				frame_ns = FRAME_IDLE;
 
 		FRAME_CFG:
-			if(flag.got_payload_len & flag.got_interval_val & flag.got_interval_unit)
+			if(flag.got_frame_header
+			& flag.got_payload_len
+			& flag.got_interval_val
+			& flag.got_interval_unit)
 				frame_ns = FRAME_PAYLOAD;
 			else
 				frame_ns = FRAME_CFG;
@@ -560,9 +586,82 @@ end
 
 always_ff @(posedge clk, posedge rst) begin
 	if(rst)
-		slid_wind <= 'd0;
+		right_aligned_wdata <= 'd0;
 	else if(w_hs)
-		slid_wind <= ;
+		right_aligned_wdata <= eff_wdata >> (wstrb_trailing_zeros * 8);
+	else
+		right_aligned_wdata <= right_aligned_wdata;
+end
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst) begin
+		frame_header_byte_cnt	<= 'd0;
+		payload_len_byte_cnt	<= 'd0;
+		interval_val_byte_cnt	<= 'd0;
+		interval_unit_byte_cnt	<= 'd0;
+	end
+	else if(frame_ns == FRAME_CFG) begin
+		frame_header_byte_cnt	<= (~flag.got_frame_header) ? (frame_header_byte_cnt + wstrb_cnt) : '0;
+		payload_len_byte_cnt	<= (~flag.got_payload_len) ? (payload_len_byte_cnt + wstrb_cnt) : '0;
+		interval_val_byte_cnt	<= (~flag.got_interval_val) ? (interval_val_byte_cnt + wstrb_cnt) : '0;
+		interval_unit_byte_cnt	<= (~flag.got_interval_unit) ? (interval_unit_byte_cnt + wstrb_cnt) : '0;;
+	end
+	else begin
+		frame_header_byte_cnt	<= frame_header_byte_cnt;
+		payload_len_byte_cnt	<= payload_len_byte_cnt;
+		interval_val_byte_cnt	<= interval_val_byte_cnt;
+		interval_unit_byte_cnt	<= interval_unit_byte_cnt;
+	end
+end
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		new_frame_hdr.frame_header <= '0;
+	else if((frame_cs == FRAME_CFG) & (~flag.got_frame_header))
+		if(frame_header_byte_cnt >= 4)
+			new_frame_hdr.frame_header <= right_aligned_wdata[31:0];
+		else
+			new_frame_hdr.frame_header <= {right_aligned_wdata, new_frame_hdr.frame_header} >> (frame_header_byte_cnt * 8);
+	else
+		new_frame_hdr.frame_header <= 'd0;
+end
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		slid_wind_byte_num <= 'd0;
+	else if(w_hs) begin
+		if((slid_wind_byte_num + wstrb_cnt) > 8)
+			slid_wind_byte_num <= slid_wind_byte_num + wstrb_cnt - 8;
+		else
+			slid_wind_byte_num <= slid_wind_byte_num + wstrb_cnt;
+	end
+	else
+		slid_wind_byte_num <= slid_wind_byte_num;
+end
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		_8_minus_slid_wind_byte_num
+end
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		flag.slid_wind_overflow <= 'd0;
+	else
+		flag.slid_wind_overflow <= w_hs & ((slid_wind_byte_num + wstrb_cnt) > 8);
+end
+
+always_ff @(posedge clk, posedge rst) begin
+	if(rst)
+		slid_wind <= 'd0;
+	else if(r1_w_hs) begin
+		if(flag.slid_wind_overflow)
+			slid_wind <= (right_aligned_wdata << ((8 - slid_wind_byte_num) * 8)) | (slid_wind >> 64);
+		else
+			slid_wind <= (right_aligned_wdata << ((8 - slid_wind_byte_num) * 8)) | slid_wind;
+	end
+	else
+		slid_wind <= slid_wind;
 end
 
 // ================================================================================

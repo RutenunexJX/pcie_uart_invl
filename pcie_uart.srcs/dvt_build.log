@@ -8,50 +8,95 @@ Auto-config - Wrote:
     -f F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\.dvt\default.build.auto.1
 *** List of invocations ***
 Invocation #1 +dvt_init+dvt in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\.dvt\default.build.auto.1 at line 9
-*** Done analyzing build configuration [31 ms] ***
+*** Done analyzing build configuration [662 ms] ***
 
 *** Start SystemVerilog build ***
 *** Invocation #1***
 Loading (1) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [7 ms, 655 lines, Verilog_2001] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [23 ms, 655 lines, Verilog_2001] ...
 Loading (2) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [10 ms, 1198 lines, Verilog_2001] ...
-Loading (3) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [11 ms, 1204 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [26 ms, 1198 lines, Verilog_2001] ...
+Loading (3) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [5 ms, 254 lines, Verilog_2001] ...
 Loading (4) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_common_package.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_common_package.sv [1 ms, 80 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_common_package.sv [13 ms, 80 lines, SystemVerilog_2012] ...
 Loading (5) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_pcie_uart_package.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_pcie_uart_package.sv [1 ms, 184 lines, SystemVerilog_2012] ...
-Loading (6) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_pcie_uart_package.sv [0 ms, 205 lines, SystemVerilog_2012] ...
+Loading (6) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv ...
 Loading (7) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_svh.svh ...
 Loading (8) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [3 ms, 336 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [9 ms, 336 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_svh.svh [1 ms, 4 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [24 ms, 1179 lines, SystemVerilog_2012] ...
+Loading (9) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv ...
+Loading (10) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_svh.svh ...
+Loading (11) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [0 ms, 336 lines, SystemVerilog_2012] ...
 Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_svh.svh [0 ms, 4 lines, SystemVerilog_2012] ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [5 ms, 529 lines, SystemVerilog_2012] ...
-Loading (9) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [0 ms, 76 lines, Verilog_2001] ...
-Loading (10) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv ...
-Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [6 ms, 1315 lines, SystemVerilog_2012] ...
-*** Done invocation #1 [59 ms] ***
-*** Done parsing [LT 32 ms, PT 59.0 ms] ***
-*** Total number of lines [5 581] ***
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [3 ms, 99 lines, SystemVerilog_2012] ...
+Loading (12) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv ...
+Loading (13) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_svh.svh ...
+Optimizing (14) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_svh.svh [0 ms, 4 lines, SystemVerilog_2012] ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [7 ms, 628 lines, SystemVerilog_2012] ...
+Loading (15) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [1 ms, 84 lines, Verilog_2001] ...
+Loading (16) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [2 ms, 144 lines, Verilog_2001] ...
+Loading (17) F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv ...
+Done F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [20 ms, 1315 lines, SystemVerilog_2012] ...
+*** Done invocation #1 [187 ms] ***
+*** Done parsing [LT 128 ms, PT 187.0 ms] ***
+*** Total number of lines [6 525] ***
 Performing post full build actions ...
 Performing post full build step 1 (SRI) [0 ms] ...
 Performing post full build step 2 (RI) [1 ms] ...
 Performing post full build step 3 (RCP) [0 ms] ...
-*** Files summary [10 total, 10 unique, 0 optimized] ***
-*** Done SystemVerilog build [65 ms] ***
+*** Files summary [17 total, 13 unique, 1 optimized] ***
+*** Done SystemVerilog build [283 ms] ***
 
 *** Start mixed mode extension build ***
-Performing mixed post full build step (VLOG - RI) [0 ms] ...
+Performing mixed post full build step (VLOG - RI) [1 ms] ...
 *** Warning: UNSPECIFIED_TOP: Please specify a -top module/entity/configuration in the project build file
-*** Top design candidates: work.pcie_uart, work.TB_1
-Performing mixed post full build step (MIXED - ELAB) [320 ms] ...
-Performing mixed post full build step (MIXED - UNEL) [51 ms] ...
+*** Top design candidates: work.rtl_top, work.pcie_uart, work.TB_1
+Performing mixed post full build step (MIXED - ELAB) [352 ms] ...
+Performing mixed post full build step (MIXED - UNEL) [52 ms] ...
+*** Error: NON_EXISTING_PORT: Non existing port 'rx_para' of module 'xdma_lite_rw'
+    at line 82 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Error: NON_EXISTING_PORT: Non existing port 'rx_ctrl' of module 'xdma_lite_rw'
+    at line 83 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Error: NON_EXISTING_PORT: Non existing port 'rx_status' of module 'xdma_lite_rw'
+    at line 84 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Error: NON_EXISTING_PORT: Non existing port 'tx_para' of module 'xdma_lite_rw'
+    at line 86 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Error: NON_EXISTING_PORT: Non existing port 'tx_ctrl' of module 'xdma_lite_rw'
+    at line 87 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Error: NON_EXISTING_PORT: Non existing port 'tx_status' of module 'xdma_lite_rw'
+    at line 88 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Error: NON_EXISTING_TYPE: Non existing type 'axi_uart_rx_para_t'
+    at line 39 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Error: NON_EXISTING_TYPE: Non existing type 'axi_uart_rx_ctrl_t'
+    at line 40 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Error: NON_EXISTING_TYPE: Non existing type 'axi_uart_rx_status_t'
+    at line 41 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: MISSING_PORT_CONNECTION: Instance 'XDMA_LITE_RW' of module 'xdma_lite_rw' is missing port connection to input 'LITE_REG_R1_RFF_USEDW, LITE_REG_R2_RFF_USEDW, LITE_REG_R3_RFF_USEDW, LITE_REG_R4_RFF_USEDW, ...'
+    at line 74 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: MISSING_PORT_CONNECTION: Instance 'XDMA_LITE_RW' of module 'xdma_lite_rw' is missing port connection to output 'LITE_REG_AXI_RD_LEN, LITE_REG_AXI_WR_MAX_LEN, LITE_REG_R1_BAUD_RATE, LITE_REG_R1_STOP_BIT, ...'
+    at line 74 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: MISSING_PORT_CONNECTION: Instance 'UART_R' of module 'uart_f2ser_read' is missing port connection to input 'clk, rst, rx_driv_flag, LR_AXI_RD_LEN, ...'
+    at line 45 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: MISSING_PORT_CONNECTION: Instance 'UART_R' of module 'uart_f2ser_read' is missing port connection to output 'is_start_bit, got_whole_brust_pkt, LR_CFG_DONE, LR_FSM_RST_DONE, ...'
+    at line 45 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: UNDECLARED_MODULE: Module 'axi_uart_rx' is not declared
+    at line 47 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: UNDRIVEN_INPUT_PORT: Input port 'tx_para' is not driven
+    at line 67 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: UNDRIVEN_INPUT_PORT: Input port 'tx_ctrl' is not driven
+    at line 68 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
 *** Warning: UNDECLARED_MODULE: Module 'IBUFDS_GTE2' is not declared
-    at line 46 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [compile index 9]
-*** Warning: UNDECLARED_MODULE: Module 'design_1_wrapper' is not declared
-    at line 56 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [compile index 9]
+    at line 46 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [compile index 15]
+*** Warning: UNDECLARED_MODULE: Module 'design_2_wrapper' is not declared
+    at line 74 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [compile index 15]
 *** Warning: UNDECLARED_MODULE: Module 'uart_ff_8k' is not declared
     at line 313 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [compile index 1]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'rff_din_data_eff' in combinational logic (use blocking assignment)
@@ -124,6 +169,50 @@ Performing mixed post full build step (MIXED - UNEL) [51 ms] ...
     at line 599 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [compile index 1]
 *** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'rx_cnt' of '4-bit' type and item expression '8' of '32-bit' type
     at line 600 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\uart_f2ser_read.v [compile index 1]
+*** Warning: UNDECLARED_MODULE: Module 'uart_ff_8k' is not declared
+    at line 329 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 12]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_awaddr' of module 'xdma_lite_rw'
+    at line 984 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_awprot' of module 'xdma_lite_rw'
+    at line 985 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_awready' of module 'xdma_lite_rw'
+    at line 986 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_awvalid' of module 'xdma_lite_rw'
+    at line 987 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_wdata' of module 'xdma_lite_rw'
+    at line 989 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_wready' of module 'xdma_lite_rw'
+    at line 990 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_wstrb' of module 'xdma_lite_rw'
+    at line 991 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_wvalid' of module 'xdma_lite_rw'
+    at line 992 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_bready' of module 'xdma_lite_rw'
+    at line 994 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_bresp' of module 'xdma_lite_rw'
+    at line 995 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_bvalid' of module 'xdma_lite_rw'
+    at line 996 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_araddr' of module 'xdma_lite_rw'
+    at line 998 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_arprot' of module 'xdma_lite_rw'
+    at line 999 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_arready' of module 'xdma_lite_rw'
+    at line 1000 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_arvalid' of module 'xdma_lite_rw'
+    at line 1001 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_rdata' of module 'xdma_lite_rw'
+    at line 1003 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_rready' of module 'xdma_lite_rw'
+    at line 1004 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_rresp' of module 'xdma_lite_rw'
+    at line 1005 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'lite_rvalid' of module 'xdma_lite_rw'
+    at line 1006 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LOGIC_VERSION' of module 'xdma_lite_rw'
+    at line 1009 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Error: NON_EXISTING_PORT: Non existing port 'LOGIC_SUB_VERSION' of module 'xdma_lite_rw'
+    at line 1010 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Error: NON_EXISTING_PORT: Non existing port 'tx_driv_flag' of module 'axi_uart_tx'
     at line 938 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Error: NON_EXISTING_PORT: Non existing port 'LR_CFG_REQ' of module 'axi_uart_tx'
@@ -184,80 +273,74 @@ Performing mixed post full build step (MIXED - UNEL) [51 ms] ...
     at line 972 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Error: UNDECLARED_IDENTIFIER: Identifier 'P_ENABLE' is not declared
     at line 933 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: MISSING_PORT_CONNECTION: Instance 'XDMA_BAR' of module 'xdma_lite_rw' is missing port connection to interface 's_axi_lite_if'
+    at line 977 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: MISSING_PORT_CONNECTION: Instance 'UART_W' of module 'axi_uart_tx' is missing port connection to input 'tx_para, tx_ctrl'
     at line 932 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: MISSING_PORT_CONNECTION: Instance 'UART_W' of module 'axi_uart_tx' is missing port connection to interface 'sw_axi_full_if'
     at line 932 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: MISSING_PORT_CONNECTION: Instance 'UART_W' of module 'axi_uart_tx' is missing port connection to output 'uart_tx, tx_status'
     at line 932 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
-*** Error: UNDECLARED_IDENTIFIER: Identifier 'frame_interval_unit_s' is not a member of 'new_tx_para'
-    at line 146 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Error: UNDECLARED_IDENTIFIER: Identifier 'frame_interval_unit_ms' is not a member of 'new_tx_para'
-    at line 147 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Error: UNDECLARED_IDENTIFIER: Identifier 'frame_interval_unit_us' is not a member of 'new_tx_para'
-    at line 148 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Error: UNDECLARED_IDENTIFIER: Identifier 'frame_interval_unit_baud_rate' is not a member of 'new_tx_para'
-    at line 149 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
-*** Warning: UNDECLARED_MODULE: Module 'uart_ff_8k' is not declared
-    at line 302 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 6]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_arid[i]' in combinational logic (use blocking assignment)
-    at line 265 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 265 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_araddr[i]' in combinational logic (use blocking assignment)
-    at line 266 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 266 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_arlen[i]' in combinational logic (use blocking assignment)
-    at line 267 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 267 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_arsize[i]' in combinational logic (use blocking assignment)
-    at line 268 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 268 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_arburst[i]' in combinational logic (use blocking assignment)
-    at line 269 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 269 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_arprot[i]' in combinational logic (use blocking assignment)
-    at line 270 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 270 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_arvalid[i]' in combinational logic (use blocking assignment)
-    at line 271 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 271 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_arlock[i]' in combinational logic (use blocking assignment)
-    at line 272 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 272 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_arcache[i]' in combinational logic (use blocking assignment)
-    at line 273 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 273 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_rready[i]' in combinational logic (use blocking assignment)
-    at line 274 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 274 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_awid[i]' in combinational logic (use blocking assignment)
-    at line 276 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 276 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_awaddr[i]' in combinational logic (use blocking assignment)
-    at line 277 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 277 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_awlen[i]' in combinational logic (use blocking assignment)
-    at line 278 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 278 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_awsize[i]' in combinational logic (use blocking assignment)
-    at line 279 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 279 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_awburst[i]' in combinational logic (use blocking assignment)
-    at line 280 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 280 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_awprot[i]' in combinational logic (use blocking assignment)
-    at line 281 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 281 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_awvalid[i]' in combinational logic (use blocking assignment)
-    at line 282 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 282 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_awlock[i]' in combinational logic (use blocking assignment)
-    at line 283 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 283 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_awcache[i]' in combinational logic (use blocking assignment)
-    at line 284 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 284 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_wdata[i]' in combinational logic (use blocking assignment)
-    at line 286 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 286 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_wstrb[i]' in combinational logic (use blocking assignment)
-    at line 287 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 287 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_wlast[i]' in combinational logic (use blocking assignment)
-    at line 288 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 288 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_wvalid[i]' in combinational logic (use blocking assignment)
-    at line 289 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 289 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'FULL_bready[i]' in combinational logic (use blocking assignment)
-    at line 291 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 291 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: WIDTH_MISMATCH_PADDING: Assignment to 'UART_RX' of '12-bit' type from 'UART_RX_r' of '1-bit' type
-    at line 853 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 853 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'SW' of '4-bit' type and item expression '0' of '32-bit' type
-    at line 894 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 894 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'SW' of '4-bit' type and item expression '1' of '32-bit' type
-    at line 915 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 915 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'SW' of '4-bit' type and item expression '2' of '32-bit' type
-    at line 956 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 956 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: CASE_ITEM_WIDTH_MISMATCH: Comparison between case expression 'SW' of '4-bit' type and item expression '3' of '32-bit' type
-    at line 962 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 962 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
+*** Warning: UNELABORATED_MODULE: Module 'work.test_axil' is not elaborated
+    at line 21 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
 *** Warning: UNELABORATED_INTERFACE: Interface 'work.axi_lite_if' is not elaborated
     at line 6 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [compile index 8]
 *** Warning: UNELABORATED_INTERFACE: Interface 'work.axi_full_if' is not elaborated
@@ -270,6 +353,8 @@ Performing mixed post full build step (MIXED - UNEL) [51 ms] ...
     at line 277 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [compile index 8]
 *** Warning: UNELABORATED_INTERFACE: Interface 'work.uart_tx_debug_if' is not elaborated
     at line 306 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\_interface.sv [compile index 8]
+*** Warning: UNELABORATED_MODULE: Module 'work.test_axi' is not elaborated
+    at line 22 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
 Performing mixed post full build step (VLOG - RD) [1 ms] ...
 Performing mixed post full build step (VLOG - US) [51 ms] ...
 *** Warning: SIGNAL_NEVER_USED: Signal 'got_whole_brust_pkt' is never used
@@ -322,6 +407,22 @@ Performing mixed post full build step (VLOG - US) [51 ms] ...
     at line 29 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_USED: Signal 'interupt_ack' is never used
     at line 30 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 's_axi_lite_awready' is never written
+    at line 517 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 's_axi_lite_wready' is never written
+    at line 522 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 's_axi_lite_bvalid' is never written
+    at line 524 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 's_axi_lite_bresp' is never written
+    at line 525 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 's_axi_lite_arready' is never written
+    at line 531 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 's_axi_lite_rdata' is never written
+    at line 533 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 's_axi_lite_rresp' is never written
+    at line 534 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 's_axi_lite_rvalid' is never written
+    at line 535 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'UART_TX' is never written
     at line 539 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NEVER_READ: Signal 'FULL_awid' is never read
@@ -472,127 +573,211 @@ Performing mixed post full build step (VLOG - US) [51 ms] ...
     at line 679 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
 *** Warning: SIGNAL_NOT_RESET: Signal 'tx_tff_usedw' is not reset
     at line 870 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\bridge_top_v2.v [compile index 2]
-*** Warning: SIGNAL_NEVER_USED: Signal 'lite_offset_e' is never used
-    at line 468 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
+*** Warning: PARAMETER_NEVER_USED: Parameter 'LOG_VERSION' is never used
+    at line 56 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: PARAMETER_NEVER_USED: Parameter 'LOG_SUB_VERSION' is never used
+    at line 57 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: PARAMETER_NEVER_USED: Parameter 'FPGA_RD_REQ_CHL' is never used
+    at line 61 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: PARAMETER_NEVER_USED: Parameter 'XDMA_TIMEOUT' is never used
+    at line 63 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
 *** Warning: SIGNAL_NEVER_READ: Signal 'awprot' is never read
-    at line 478 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
+    at line 81 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
 *** Warning: SIGNAL_NEVER_READ: Signal 'wstrb' is never read
-    at line 486 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
+    at line 89 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
 *** Warning: SIGNAL_NEVER_READ: Signal 'arprot' is never read
-    at line 502 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 3]
+    at line 105 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 122 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 129 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 140 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 151 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 170 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 181 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 204 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 213 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 222 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axil.v [compile index 3]
+*** Warning: SIGNAL_NEVER_USED: Signal 'lite_offset_e' is never used
+    at line 443 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 6]
+*** Warning: SIGNAL_NEVER_READ: Signal 'awprot' is never read
+    at line 453 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 6]
+*** Warning: SIGNAL_NEVER_READ: Signal 'wstrb' is never read
+    at line 461 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 6]
+*** Warning: SIGNAL_NEVER_READ: Signal 'arprot' is never read
+    at line 477 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\xdma_lite_rw.sv [compile index 6]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'tx_para' is never written
+    at line 39 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'tx_ctrl' is never written
+    at line 40 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'tx_status' is never written
+    at line 41 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\rtl_top.sv [compile index 9]
+*** Warning: SIGNAL_NEVER_READ: Signal 'r1_wstrb_cnt' is never read
+    at line 60 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 12]
+*** Warning: SIGNAL_NEVER_USED: Signal 'slid_wind' is never used
+    at line 80 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 12]
+*** Warning: SIGNAL_NEVER_USED: Signal 'slid_wind_byte_num' is never used
+    at line 81 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 12]
+*** Warning: SIGNAL_NEVER_USED: Signal 'payload_len_byte_cnt' is never used
+    at line 83 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 12]
+*** Warning: SIGNAL_NEVER_USED: Signal 'interval_val_byte_cnt' is never used
+    at line 84 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 12]
+*** Warning: SIGNAL_NEVER_USED: Signal 'interval_unit_byte_cnt' is never used
+    at line 85 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 12]
+*** Warning: SIGNAL_NEVER_READ: Signal 'cur_frame_hdr' is never read
+    at line 140 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\axi_uart_tx.sv [compile index 12]
+*** Warning: SIGNAL_NEVER_USED: Signal 'RS422_RX' is never used
+    at line 36 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [compile index 15]
+*** Warning: SIGNAL_NEVER_USED: Signal 'RS422_TX' is never used
+    at line 37 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\pcie_uart.v [compile index 15]
+*** Warning: SIGNAL_NEVER_READ: Signal 'awid' is never read
+    at line 54 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: SIGNAL_NEVER_READ: Signal 'awaddr' is never read
+    at line 55 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: SIGNAL_NEVER_READ: Signal 'awlen' is never read
+    at line 56 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: SIGNAL_NEVER_READ: Signal 'awsize' is never read
+    at line 57 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: SIGNAL_NEVER_READ: Signal 'awburst' is never read
+    at line 58 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: SIGNAL_NEVER_READ: Signal 'awprot' is never read
+    at line 59 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: SIGNAL_NEVER_READ: Signal 'awlock' is never read
+    at line 61 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: SIGNAL_NEVER_READ: Signal 'awcache' is never read
+    at line 62 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: SIGNAL_NEVER_READ: Signal 'wdata' is never read
+    at line 71 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: SIGNAL_NEVER_READ: Signal 'wstrb' is never read
+    at line 72 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 91 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 102 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 114 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'rst' is not an input port
+    at line 125 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sources_1\new\test_axi.v [compile index 16]
 *** Warning: SIGNAL_NEVER_READ: Signal 'LOG_SW' is never read
-    at line 68 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 68 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'INIT' is never read
-    at line 71 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 71 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'WR_WALT' is never read
-    at line 72 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 72 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'interupt_req' is never read (connected to sub-instance output port)
-    at line 80 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 80 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'interupt_ack' is never written (connected to sub-instance input port)
-    at line 81 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 81 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'LOGIC_VERSION' is never written (connected to sub-instance input port)
-    at line 82 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 82 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_WRITTEN: Signal 'LOGIC_SUB_VERSION' is never written (connected to sub-instance input port)
-    at line 83 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 83 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 's_axi_lite_awready' is never read (connected to sub-instance output port)
-    at line 89 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 89 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 's_axi_lite_wready' is never read (connected to sub-instance output port)
-    at line 94 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 94 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 's_axi_lite_bvalid' is never read (connected to sub-instance output port)
-    at line 96 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 96 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 's_axi_lite_bresp' is never read (connected to sub-instance output port)
-    at line 97 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 97 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 's_axi_lite_rdata' is never read (connected to sub-instance output port)
-    at line 105 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 105 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 's_axi_lite_rresp' is never read (connected to sub-instance output port)
-    at line 106 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 106 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awid' is never used
-    at line 154 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 154 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awaddr' is never used
-    at line 155 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 155 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awlen' is never used
-    at line 156 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 156 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awsize' is never used
-    at line 157 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 157 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awburst' is never used
-    at line 158 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 158 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awprot' is never used
-    at line 159 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 159 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awvalid' is never used
-    at line 160 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 160 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awlock' is never used
-    at line 161 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 161 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awcache' is never used
-    at line 162 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 162 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_awready' is never used
-    at line 163 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 163 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_wdata' is never used
-    at line 164 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 164 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_wstrb' is never used
-    at line 165 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 165 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_wlast' is never used
-    at line 166 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 166 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_wvalid' is never used
-    at line 167 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 167 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_wready' is never used
-    at line 168 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 168 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_bid' is never used
-    at line 169 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 169 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_bresp' is never used
-    at line 170 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 170 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_bvalid' is never used
-    at line 171 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 171 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'RD_IMG_bready' is never used
-    at line 172 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 172 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'RD_IMG_rid' is never read
-    at line 183 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 183 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'RD_IMG_rdata' is never read
-    at line 184 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 184 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'RD_IMG_rresp' is never read
-    at line 185 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 185 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'RD_IMG_rvalid' is never read
-    at line 187 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 187 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'WR_IMG_bid' is never read
-    at line 205 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 205 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'WR_IMG_bresp' is never read
-    at line 206 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 206 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'WR_IMG_bvalid' is never read
-    at line 207 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 207 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_arid' is never used
-    at line 209 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 209 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_araddr' is never used
-    at line 210 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 210 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_arlen' is never used
-    at line 211 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 211 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_arsize' is never used
-    at line 212 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 212 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_arburst' is never used
-    at line 213 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 213 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_arprot' is never used
-    at line 214 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 214 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_arvalid' is never used
-    at line 215 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 215 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_arlock' is never used
-    at line 216 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 216 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_arcache' is never used
-    at line 217 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 217 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_arready' is never used
-    at line 218 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 218 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_rid' is never used
-    at line 219 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 219 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_rdata' is never used
-    at line 220 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 220 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_rresp' is never used
-    at line 221 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 221 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_rlast' is never used
-    at line 222 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 222 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_rvalid' is never used
-    at line 223 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 223 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_USED: Signal 'WR_IMG_rready' is never used
-    at line 224 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
+    at line 224 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
 *** Warning: SIGNAL_NEVER_READ: Signal 'READ_DONE' is never read
-    at line 228 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 10]
-*** Done mixed mode extension build [440 ms] ***
+    at line 228 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\sim_1\new\TB_1.sv [compile index 17]
+*** Done mixed mode extension build [531 ms] ***
 *** Start adding/validating the DVT Auto-Linked resources ***
-*** Done adding/validating the DVT Auto-Linked resources [2 ms] ***
-*** Total build time [565 ms] ***
+*** Done adding/validating the DVT Auto-Linked resources [6 ms] ***
+*** Total build time [1s.565ms] ***
