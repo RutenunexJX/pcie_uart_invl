@@ -81,11 +81,9 @@ logic	[15:0]	act_axi_wr_max_len			;
 logic	[63:0]	right_aligned_wdata			;
 logic	[127:0]	slid_wind					;
 logic	[4:0]	slid_wind_byte_num			;
-logic	[3:0]	frame_header_byte_cnt		;
-logic	[3:0]	payload_len_byte_cnt		;
-logic	[3:0]	interval_byte_cnt			;
 logic	[63:0]	comb_data					;
 logic	[4:0]	_8_minus_slid_wind_byte_num	;
+logic	[4:0]	r1_slid_wind_byte_num		;
 
 // ================================================================================
 //                               struct and enum definition
@@ -184,16 +182,18 @@ end
 // ================================================================================
 always_ff @(posedge clk, posedge rst) begin
 	if(rst) begin
-		r1_phase_sum	<= 'd0;
-		r1_tx_driv_flag	<= 'd0;
-		r1_wstrb_cnt	<= 'd0;
-		r1_w_hs			<= 'd0;
+		r1_phase_sum			<= 'd0;
+		r1_tx_driv_flag			<= 'd0;
+		r1_wstrb_cnt			<= 'd0;
+		r1_w_hs					<= 'd0;
+		r1_slid_wind_byte_num	<= 'd0;
 	end
 	else begin
-		r1_phase_sum	<= phase_sum;
-		r1_tx_driv_flag	<= tx_driv_flag;
-		r1_wstrb_cnt	<= wstrb_cnt;
-		r1_w_hs			<= w_hs;
+		r1_phase_sum			<= phase_sum;
+		r1_tx_driv_flag			<= tx_driv_flag;
+		r1_wstrb_cnt			<= wstrb_cnt;
+		r1_w_hs					<= w_hs;
+		r1_slid_wind_byte_num	<= slid_wind_byte_num;
 	end
 end
 
@@ -594,34 +594,10 @@ always_ff @(posedge clk, posedge rst) begin
 end
 
 always_ff @(posedge clk, posedge rst) begin
-	if(rst) begin
-		frame_header_byte_cnt	<= 'd0;
-		payload_len_byte_cnt	<= 'd0;
-		interval_val_byte_cnt	<= 'd0;
-		interval_unit_byte_cnt	<= 'd0;
-	end
-	else if(frame_ns == FRAME_CFG) begin
-		frame_header_byte_cnt	<= (~flag.got_frame_header) ? (frame_header_byte_cnt + wstrb_cnt) : '0;
-		payload_len_byte_cnt	<= (~flag.got_payload_len) ? (payload_len_byte_cnt + wstrb_cnt) : '0;
-		interval_val_byte_cnt	<= (~flag.got_interval_val) ? (interval_val_byte_cnt + wstrb_cnt) : '0;
-		interval_unit_byte_cnt	<= (~flag.got_interval_unit) ? (interval_unit_byte_cnt + wstrb_cnt) : '0;;
-	end
-	else begin
-		frame_header_byte_cnt	<= frame_header_byte_cnt;
-		payload_len_byte_cnt	<= payload_len_byte_cnt;
-		interval_val_byte_cnt	<= interval_val_byte_cnt;
-		interval_unit_byte_cnt	<= interval_unit_byte_cnt;
-	end
-end
-
-always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		new_frame_hdr.frame_header <= '0;
 	else if((frame_cs == FRAME_CFG) & (~flag.got_frame_header))
-		if(frame_header_byte_cnt >= 4)
-			new_frame_hdr.frame_header <= right_aligned_wdata[31:0];
-		else
-			new_frame_hdr.frame_header <= {right_aligned_wdata, new_frame_hdr.frame_header} >> (frame_header_byte_cnt * 8);
+
 	else
 		new_frame_hdr.frame_header <= 'd0;
 end
@@ -630,7 +606,7 @@ always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		slid_wind_byte_num <= 'd0;
 	else if(w_hs) begin
-		if((slid_wind_byte_num + wstrb_cnt) > 8)
+		if((slid_wind_byte_num + wstrb_cnt) >= 8)
 			slid_wind_byte_num <= slid_wind_byte_num + wstrb_cnt - 8;
 		else
 			slid_wind_byte_num <= slid_wind_byte_num + wstrb_cnt;
@@ -639,29 +615,34 @@ always_ff @(posedge clk, posedge rst) begin
 		slid_wind_byte_num <= slid_wind_byte_num;
 end
 
-always_ff @(posedge clk, posedge rst) begin
-	if(rst)
-		_8_minus_slid_wind_byte_num
+always_ff @(posedge clk) begin
+	_8_minus_slid_wind_byte_num <= 8 - slid_wind_byte_num;
 end
 
 always_ff @(posedge clk, posedge rst) begin
 	if(rst)
 		flag.slid_wind_overflow <= 'd0;
 	else
-		flag.slid_wind_overflow <= w_hs & ((slid_wind_byte_num + wstrb_cnt) > 8);
+		flag.slid_wind_overflow <= w_hs & ((slid_wind_byte_num + wstrb_cnt) >= 8);
 end
 
 always_ff @(posedge clk, posedge rst) begin
-	if(rst)
+	if(rst) begin
 		slid_wind <= 'd0;
+		comb_data <= 'd0;
+	end
 	else if(r1_w_hs) begin
 		if(flag.slid_wind_overflow)
-			slid_wind <= (right_aligned_wdata << ((8 - slid_wind_byte_num) * 8)) | (slid_wind >> 64);
-		else
-			slid_wind <= (right_aligned_wdata << ((8 - slid_wind_byte_num) * 8)) | slid_wind;
+			{slid_wind, comb_data} <= 192'(((128'(right_aligned_wdata) << (8 * r1_slid_wind_byte_num)) | slid_wind) >> 64);
+		else begin
+			slid_wind <= (128'(right_aligned_wdata) << (slid_wind_byte_num * 8)) | slid_wind;
+			comb_data <= 'd0;
+		end
 	end
-	else
+	else begin
 		slid_wind <= slid_wind;
+		comb_data <= comb_data;
+	end
 end
 
 // ================================================================================
