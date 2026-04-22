@@ -1,7 +1,7 @@
 ################################################################################
 #                    DO NOT MANUALLY EDIT THIS FILE!                           #
 ################################################################################
-# This file contains the automatically generated build configuration (2026/04/20 15:45:48)
+# This file contains the automatically generated build configuration (2026/04/22 17:31:30)
 # requested at line 3 in F:\_xu\_prj\pcie_uart_tx_array\pcie_uart_invl\pcie_uart.srcs\.dvt\default.build
 
 
@@ -10,10 +10,15 @@
 
 +incdir+sources_1\new
 
+### AUTOCONFIG WARNING: Missing macro definitions
+# The following macros are used but not defined:
+# +define+sim_error
+
 # Available `ifdef / `ifndef controls:
 # +define+DEBUG_rtl_top
 # +define+DEBUG_uart_f2ser_read
 # +define+DEBUG_xdma_lite_rw
+# +define+SIM_VCS
 # +define+TEST
 # +define+USE_BRUST_REG
 
@@ -25,7 +30,9 @@ sources_1/new/_pcie_uart_package.sv
 sources_1/new/xdma_lite_rw.sv
 sources_1/new/rtl_top.sv
 sources_1/new/axi_uart_tx.sv
+sim_1/new/_sim_package.sv
 sources_1/new/pcie_uart.v
 sources_1/new/test_axi.v
 sim_1/new/TB_1.sv
+sim_1/new/TB_2.sv
 
