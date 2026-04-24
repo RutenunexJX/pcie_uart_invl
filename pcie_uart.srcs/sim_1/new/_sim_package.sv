@@ -60,7 +60,6 @@ package sim_package;
 	    sim_error_count++; \
 	    $fatal(1, MSG); \
 	end
-
 // ================================================================================
 //                               result check
 // ================================================================================
@@ -126,9 +125,9 @@ endfunction
 int sim_seed = 32'hDEAD_BEEF;
 
 function automatic void init_seed();
-	sim_seed = get_plusarg_int("SEED", 32'hDEAD_BEEF);
-	void'($urandom(sim_seed));
-	$display("[SIM  ] random seed = 0x%08h", sim_seed);
+    sim_seed = get_plusarg_int("SEED", 32'hDEAD_BEEF);
+    $srandom(sim_seed); // urandom is not supported in XSIM
+    $display("[SIM  ] random seed = 0x%08h", sim_seed);
 endfunction
 
 function automatic int urand_range(int lo, int hi);

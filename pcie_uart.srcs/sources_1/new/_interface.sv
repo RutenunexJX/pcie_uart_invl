@@ -1,8 +1,3 @@
-`ifndef _INTERFACE
-`define _INTERFACE
-
-import common_package::*;
-
 interface axi_lite_if #(
     parameter int ADDR_W = 32,
     parameter int DATA_W = 32
@@ -10,7 +5,7 @@ interface axi_lite_if #(
     input logic clk,
     input logic rst
 );
-    localparam int STRB_W = DATA_W / 8;
+	localparam int STRB_W = DATA_W / 8;
 
     logic [ADDR_W-1:0]  awaddr  ;
     logic [2:0]         awprot  ;
@@ -76,7 +71,7 @@ interface axi_full_if #(
     parameter int ID_W   = 4,
     parameter int ADDR_W = 64,
     parameter int DATA_W = 64
-);
+)(input clk, input rst_n);
     localparam int STRB_W = DATA_W / 8;
 
     logic [ID_W-1:0]    awid    ;
@@ -210,7 +205,9 @@ endinterface : axi_full_if
 `define P_ENA(name) ,parameter bit P_ENA_``name = P_DISABLE
 `define DIS(name) if(P_ENA_``name == P_DISABLE) assign name = '0;
 
-interface mux_buffer_debug_if #(
+interface mux_buffer_debug_if 
+	import common_package::*;
+#(
 	parameter	bit	P_GLB_ENA		= P_DISABLE,
 
 	parameter	bit P_ENA_ERRO		= P_DISABLE,
@@ -245,7 +242,9 @@ interface mux_buffer_debug_if #(
 	);
 endinterface: mux_buffer_debug_if
 
-interface axi_mux_debug_if #(
+interface axi_mux_debug_if 
+	import common_package::*;
+#(
 	parameter	bit	P_GLB_ENA		= P_DISABLE,
 
 	parameter	bit P_ENA_ERRO		= P_DISABLE,
@@ -274,7 +273,9 @@ interface axi_mux_debug_if #(
 	);
 endinterface: axi_mux_debug_if
 
-interface uart_rx_debug_if #(
+interface uart_rx_debug_if 
+	import common_package::*;
+#(
 	parameter	bit	P_GLB_ENA		= P_DISABLE,
 
 	parameter	bit P_ENA_ERRO		= P_DISABLE,
@@ -303,7 +304,9 @@ interface uart_rx_debug_if #(
 	);
 endinterface: uart_rx_debug_if
 
-interface uart_tx_debug_if #(
+interface uart_tx_debug_if
+	import common_package::*;
+#(
 	parameter	bit	P_GLB_ENA		= P_DISABLE,
 
 	parameter	bit P_ENA_ERRO		= P_DISABLE,
@@ -332,4 +335,3 @@ interface uart_tx_debug_if #(
 	);
 endinterface: uart_tx_debug_if
 
-`else `endif

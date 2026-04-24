@@ -12,6 +12,9 @@
 //
 //////////////////////////////////////////////////////////////////////////
 `include "_svh.svh"
+import common_package::*;
+import pcie_uart_package::*;
+
 `define DEBUG_axi_uart_tx
 module axi_uart_tx #(
 	parameter bit P_PARA_VALIDITY_CHECK = P_DISABLE
@@ -140,8 +143,8 @@ tx_fifo_t			tx_fifo;
 axi_uart_tx_para_t	new_tx_para;
 axi_uart_tx_para_t	cur_tx_para;
 flag_t				flag = '{default:'0};
-priv_frame_hdr_t	new_frame_hdr = '{default:'0};
-priv_frame_hdr_t	cur_frame_hdr = '{default:'0};
+priv_frame_hdr_t	new_frame_hdr = '{interval_unit:E_INTERVAL_UNIT_US,default:'0};
+priv_frame_hdr_t	cur_frame_hdr = '{interval_unit:E_INTERVAL_UNIT_US,default:'0};
 
 // ================================================================================
 //                               combinational assignment
@@ -591,15 +594,6 @@ always_ff @(posedge clk, posedge rst) begin
 		right_aligned_wdata <= eff_wdata >> (wstrb_trailing_zeros * 8);
 	else
 		right_aligned_wdata <= right_aligned_wdata;
-end
-
-always_ff @(posedge clk, posedge rst) begin
-	if(rst)
-		new_frame_hdr.frame_header <= '0;
-	else if((frame_cs == FRAME_CFG) & (~flag.got_frame_header))
-
-	else
-		new_frame_hdr.frame_header <= 'd0;
 end
 
 always_ff @(posedge clk, posedge rst) begin
